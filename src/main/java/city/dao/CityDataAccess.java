@@ -1,6 +1,6 @@
-package city.dataaccess;
+package city.dao;
 
-import city.domain.Cities;
+import city.domain.City;
 import city.transactions.CityDataAccessInterface;
 
 import javax.ejb.*;
@@ -13,13 +13,13 @@ public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
   @Inject
   private CityDataAccessInterface cda;
 
-  public void addCity(Cities city) {
+  public void addCity(City city) {
     cda.addCity(city);
   }
   public void removeCity(String city) {
     cda.removeCity(city);
   }
-  public List<Cities> showAllCities() {
+  public List<City> showAllCities() {
     return cda.showAllCities();
   }
 
@@ -27,7 +27,7 @@ public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
     return cda.getCityByName(name);
   }
 
-  public List<Cities> getCitiesBetweenMinMaxPopulation(String min, String max) {
+  public List<City> getCitiesBetweenMinMaxPopulation(String min, String max) {
     return cda.getCitiesBetweenMinMaxPopulation(min, max);
   }
 

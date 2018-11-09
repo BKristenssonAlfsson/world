@@ -1,7 +1,7 @@
 package city.rest;
 
-import city.dataaccess.DataAccessLocal;
-import city.domain.Cities;
+import city.dao.DataAccessLocal;
+import city.domain.City;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -38,7 +38,7 @@ public class CityResource{
   @Produces({"application/JSON"})
   public Response showAllCities() {
 	  try {
-		  List<Cities> result = dal.showAllCities();
+		  List<City> result = dal.showAllCities();
 		  logger.trace(result);
 		  return Response.ok(result).build();
 	  } catch ( Exception e ) {
@@ -49,7 +49,7 @@ public class CityResource{
 	@POST
 	@Produces("application/JSON")
 	@Consumes("application/JSON")
-	public Cities addCity(Cities city) {
+	public City addCity(City city) {
 		try {
 			dal.addCity(city);
 		} catch (ServiceUnavailableException e) {

@@ -1,7 +1,7 @@
 package city.rest;
 
-import city.dataaccess.DataAccessLocal;
-import city.domain.Cities;
+import city.dao.DataAccessLocal;
+import city.domain.City;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,7 +25,7 @@ public class CityMinMaxPopulation {
 	  @Produces({"application/JSON"})
 	  public Response findCitiesBetweenMinMaxPopulation(@QueryParam("cityOne") String cityOne, @QueryParam("cityTwo") String cityTwo) {
 		  try {
-			  List<Cities> result = dal.getCitiesBetweenMinMaxPopulation(cityOne, cityTwo);
+			  List<City> result = dal.getCitiesBetweenMinMaxPopulation(cityOne, cityTwo);
 			  return Response.ok(result).build();
 		  } catch ( Exception e ) {
 			  return Response.status(404).build();

@@ -1,4 +1,4 @@
-package city.dataaccess;
+package city.dao;
 
 import javax.ejb.*;
 

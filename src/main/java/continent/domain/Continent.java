@@ -1,4 +1,4 @@
-package city.domain;
+package continent.domain;
 
 import lombok.*;
 
@@ -7,13 +7,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @Getter
+@Entity
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Entity
 @XmlRootElement
-public class Cities implements Serializable {
+@Table(name="continent")
+@ToString
+public class Continent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,14 +22,10 @@ public class Cities implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "population")
-    private int population;
-    @Column(name = "country")
-    private int country;
-    @Column(name = "continent")
-    private int continent;
+    @Column(name="continent")
+    private String continent;
+    @Column(name="countries")
+    private int countries;
+    @Column(name="languages")
+    private int languages;
 }
-
-
