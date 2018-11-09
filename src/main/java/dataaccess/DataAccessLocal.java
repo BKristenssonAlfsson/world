@@ -12,5 +12,5 @@ public interface DataAccessLocal {
   public List<Cities> showAllCities();
   public String getCityByName(String name);
   public List<Cities> getCitiesBetweenMinMaxPopulation(String cityOne, String cityTwo);
-public void updateCity(String name, String newName, Integer population);
+  public void updateCity(String name, String newName, Integer population);
 }

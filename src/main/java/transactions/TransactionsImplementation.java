@@ -13,7 +13,7 @@ import java.util.List;
 @Default
 public class TransactionsImplementation implements CityDataAccessInterface {
 
-    @PersistenceContext(unitName="cities")
+    @PersistenceContext(unitName="world")
     private EntityManager em;
 
     @Override
