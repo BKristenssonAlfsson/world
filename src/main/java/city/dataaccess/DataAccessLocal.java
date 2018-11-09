@@ -1,6 +1,6 @@
-package dataaccess;
+package city.dataaccess;
 
-import domain.Cities;
+import city.domain.Cities;
 
 import javax.ejb.*;
 import java.util.List;

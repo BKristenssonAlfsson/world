@@ -1,6 +1,6 @@
-package transactions;
+package city.transactions;
 
-import domain.Cities;
+import city.domain.Cities;
 
 import javax.ejb.*;
 import java.util.List;

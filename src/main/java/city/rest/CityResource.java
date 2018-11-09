@@ -1,7 +1,9 @@
-package rest;
+package city.rest;
 
-import dataaccess.DataAccessLocal;
-import domain.Cities;
+import city.dataaccess.DataAccessLocal;
+import city.domain.Cities;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,6 +14,8 @@ import java.util.List;
 @Stateless
 @Path("/city")
 public class CityResource{
+
+  private Logger logger = LogManager.getLogger(CityResource.class.getName());
 	
   public CityResource() {}
 
@@ -35,6 +39,7 @@ public class CityResource{
   public Response showAllCities() {
 	  try {
 		  List<Cities> result = dal.showAllCities();
+		  logger.trace(result);
 		  return Response.ok(result).build();
 	  } catch ( Exception e ) {
 		  return Response.status(425).build();

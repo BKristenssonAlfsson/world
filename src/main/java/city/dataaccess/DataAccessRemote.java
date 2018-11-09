@@ -1,4 +1,4 @@
-package dataaccess;
+package city.dataaccess;
 
 import javax.ejb.*;
 

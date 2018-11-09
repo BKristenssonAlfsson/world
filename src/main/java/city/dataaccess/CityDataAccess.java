@@ -1,7 +1,7 @@
-package dataaccess;
+package city.dataaccess;
 
-import domain.Cities;
-import transactions.CityDataAccessInterface;
+import city.domain.Cities;
+import city.transactions.CityDataAccessInterface;
 
 import javax.ejb.*;
 import javax.inject.*;

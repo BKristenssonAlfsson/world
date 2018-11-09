@@ -1,7 +1,7 @@
-package rest;
+package city.rest;
 
-import dataaccess.DataAccessLocal;
-import domain.Cities;
+import city.dataaccess.DataAccessLocal;
+import city.domain.Cities;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
