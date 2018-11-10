@@ -42,7 +42,8 @@ public class CityResource{
 		  logger.trace(result);
 		  return Response.ok(result).build();
 	  } catch ( Exception e ) {
-		  return Response.status(425).build();
+	      logger.trace(e);
+		  return Response.status(402).build();
 	  }
   }
   

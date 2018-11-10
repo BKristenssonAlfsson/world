@@ -1,4 +1,7 @@
 package continent.dao;
 
-public interface DAOremote {
+import javax.ejb.Remote;
+
+@Remote
+public interface DAOremote extends DAOlocal {
 }

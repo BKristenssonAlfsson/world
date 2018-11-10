@@ -1,6 +1,8 @@
 package city.transactions;
 
 import city.domain.City;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -13,6 +15,8 @@ import java.util.List;
 @Default
 public class TransactionsImplementation implements CityDataAccessInterface {
 
+    private Logger logger = LogManager.getLogger(TransactionsImplementation.class.getName());
+
     @PersistenceContext(unitName="world")
     private EntityManager em;
 
@@ -24,27 +28,28 @@ public class TransactionsImplementation implements CityDataAccessInterface {
 
     @Override
     public void removeCity(String name) {
-		Query q = em.createNativeQuery("DELETE FROM cities WHERE name = :city", City.class);
+		Query q = em.createNativeQuery("DELETE FROM city WHERE name = :city", City.class);
 		q.setParameter("city", name).executeUpdate();
     }
 
     @Override
     public List<City> showAllCities() {
-		Query q = em.createNativeQuery("SELECT * FROM cities", City.class);
+		Query q = em.createNativeQuery("SELECT * FROM city", City.class);
+        logger
 		List<City> cities = q.getResultList();
 		return cities;
     }
 
     @Override
     public String getCityByName(String name) {
-    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE name = :city", City.class);
+    	Query q = em.createNativeQuery("SELECT * FROM city WHERE name = :city", City.class);
     	q.setParameter("city", name);
     	List<City> result = q.getResultList();
     	return result.toString();
     }
 
     public List<City> getCitiesBetweenMinMaxPopulation(String min, String max){
-      Query q = em.createNativeQuery("SELECT * FROM cities WHERE population >= :minimum AND population <= :maximum", City.class);
+      Query q = em.createNativeQuery("SELECT * FROM city WHERE population >= :minimum AND population <= :maximum", City.class);
       q.setParameter("minimum", min);
       q.setParameter("maximum", max);
       List<City> result = q.getResultList();
@@ -52,7 +57,7 @@ public class TransactionsImplementation implements CityDataAccessInterface {
     }
 
 	public City findByCityName(String name) {
-		Query q = em.createNativeQuery("SELECT * FROM cities WHERE name= :city", City.class);
+		Query q = em.createNativeQuery("SELECT * FROM city WHERE name= :city", City.class);
 		q.setParameter("city", name);
 		return (City)q.getSingleResult();
 		
