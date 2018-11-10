@@ -35,7 +35,7 @@ public class TransactionsImplementation implements CityDataAccessInterface {
     @Override
     public List<City> showAllCities() {
 		Query q = em.createNativeQuery("SELECT * FROM city", City.class);
-        logger
+
 		List<City> cities = q.getResultList();
 		return cities;
     }
