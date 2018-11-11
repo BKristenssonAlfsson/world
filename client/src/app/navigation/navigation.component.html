@@ -1,11 +1,12 @@
 <mat-toolbar color="primary" class="mat-elevation-z8 header">
-  <button mat-button [matMenuTriggerFor]="appMenu">The World</button>
+  <button mat-button><mat-icon>home</mat-icon></button>
+  <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>info</mat-icon></button>
   <mat-menu #appMenu="matMenu">
     <button mat-menu-item routerLink="/continent" [routerLinkActive]>Continents</button>
     <button mat-menu-item routerLink="/country" [routerLinkActive]>Countries</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="user">User</button>
+  <button mat-button [matMenuTriggerFor]="user"><mat-icon>person</mat-icon></button>
   <mat-menu #user="matMenu">
     <button mat-menu-item>Log in</button>
   </mat-menu>

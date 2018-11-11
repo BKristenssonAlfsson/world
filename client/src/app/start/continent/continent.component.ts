@@ -19,6 +19,14 @@ export class ContinentComponent implements OnInit {
     this.api.getCities().subscribe((data: any) => {
       console.log(data);
     });
+
+    this.api.getCountries().subscribe((data: any) => {
+      console.log(data);
+    });
+
+    this.api.getLanguages().subscribe((data:any) => {
+      console.log(data);
+    });
   }
 
   ngOnInit() {
