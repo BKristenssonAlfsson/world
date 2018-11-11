@@ -4,7 +4,7 @@
    <persistence-unit name="world" transaction-type="JTA">
       <jta-data-source>java:/world</jta-data-source>
       <properties>
-        	<property name="hibernate.hbm2ddl.auto" value="update" />
+        	<property name="hibernate.hbm2ddl.auto" value="create" />
       </properties>
    </persistence-unit>
 </persistence>
