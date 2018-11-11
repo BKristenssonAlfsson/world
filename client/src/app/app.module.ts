@@ -11,6 +11,7 @@ import { CountryComponent } from './start/country/country.component';
 import { HomeComponent } from './start/home/home.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "./shared/service/api.service";
+import {Url} from "./shared/service/url";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ApiService } from "./shared/service/api.service";
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, Url],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

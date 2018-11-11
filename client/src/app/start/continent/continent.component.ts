@@ -10,17 +10,23 @@ export class ContinentComponent implements OnInit {
 
   private continents: any[] = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {
+    this.api.getContinents().subscribe((data: any) => {
+      this.continents = data;
+      console.log(data);
+    });
+
+    this.api.getCities().subscribe((data: any) => {
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
     this.getContinents();
   }
 
   getContinents() {
-    this.api.getContinents().subscribe((data: Array<any>) => {
-      this.continents = data;
-      console.log(data);
-    });
+
   }
 
 

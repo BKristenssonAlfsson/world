@@ -58,6 +58,7 @@
             <version>2.1</version>
         </dependency>
 
+        <!-- Corsfilter -->
         <dependency>
             <groupId>com.airhacks</groupId>
             <artifactId>jaxrs-cors</artifactId>
