@@ -13,7 +13,7 @@ import java.util.List;
 @Default
 public class LanguageTransactionsImplementation implements LanguageDataAccess {
 
-    @PersistenceContext(unitName="language")
+    @PersistenceContext(unitName="world")
     private EntityManager em;
 
     @Override

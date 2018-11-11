@@ -1,6 +1,6 @@
 package language.rest;
 
-import language.dao.DAOlocal;
+import language.dao.LanguageDAOlocal;
 import language.domain.Language;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class LanguageResource {
 
     @Inject
-    private DAOlocal dal;
+    private LanguageDAOlocal dal;
 
     @GET
     @Produces({"application/JSON"})

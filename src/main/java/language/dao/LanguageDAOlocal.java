@@ -5,6 +5,6 @@ import javax.ejb.Local;
 import java.util.List;
 
 @Local
-public interface DAOlocal {
+public interface LanguageDAOlocal {
     public List<Language> listAllLanguages();
 }
