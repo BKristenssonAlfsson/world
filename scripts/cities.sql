@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS city (
+CREATE TABLE IF NOT EXISTS world (
     `Column_1` NUMERIC(5, 1),
     `Column_2` NUMERIC(2, 1),
     `Column_3` NUMERIC(4, 1),

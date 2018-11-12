@@ -9,7 +9,7 @@
 
     <name>Bjorns world project</name>
     <url>http://maven.apache.org</url>
-    <description>Bjorns Java EE 8 server programming project. Will be about adding city</description>
+    <description>Bjorns Java EE 8 server programming project. Will be about adding world</description>
 
     <developers>
         <developer>
