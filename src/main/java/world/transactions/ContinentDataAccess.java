@@ -10,4 +10,5 @@ public interface ContinentDataAccess  {
 
     public abstract List<Continent> showAllContinents();
     public abstract List<Continent> showDetailsAboutContinent(Integer id);
+    public abstract List<Continent> showAllCountries(Integer id);
 }

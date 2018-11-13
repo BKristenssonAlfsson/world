@@ -1,7 +1,5 @@
 package world.dao;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import world.domain.City;
 import world.domain.Continent;
 import world.domain.Country;
@@ -23,4 +21,5 @@ public interface DataAccessLocal {
   public List<Country> showAllCountries();
   public List<Language> listAllLanguages();
   public List<Continent> showDetailsAboutContinent(Integer continent);
+  public List<Continent> showAllCountries(Integer continent);
 }

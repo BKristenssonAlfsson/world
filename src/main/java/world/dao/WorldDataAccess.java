@@ -61,6 +61,8 @@ public class WorldDataAccess implements DataAccessLocal, DataAccessRemote {
 
   public List<Continent> showAllContinents() { return continentDataAccess.showAllContinents(); }
 
+  public List<Continent> showAllCountries( Integer id) { return continentDataAccess.showAllCountries(id); }
+
   public List<Country> showAllCountries() { return countryDataAccess.showAllCountries(); }
 
   public List<Language> listAllLanguages() { return languageDataAccess.listAllLanguages(); }

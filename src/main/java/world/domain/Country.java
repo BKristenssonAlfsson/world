@@ -25,4 +25,8 @@ public class Country implements Serializable {
     private int continent;
     @Column(name = "country")
     private String name;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Continent c;
 }

@@ -46,4 +46,16 @@ public class ContinentResource {
             return Response.status(412).build();
         }
     }
+
+    @GET
+    @Produces({"application/JSON"})
+    @Path("{continentId}")
+    public Response showAllCountries(@PathParam("continentId") Integer id) {
+        try {
+            List<Continent> result = dal.showAllCountries(id);
+            return Response.ok(result).build();
+        } catch (Exception e ) {
+            return Response.status(409).build();
+        }
+    }
 }
