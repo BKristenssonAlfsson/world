@@ -60,10 +60,9 @@
 
         <!-- Corsfilter -->
         <dependency>
-            <groupId>com.airhacks</groupId>
-            <artifactId>jaxrs-cors</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>cors-filter</artifactId>
+            <version>2.6</version>
         </dependency>
 
         <dependency>
@@ -124,6 +123,13 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
             <version>1.2.17</version>
             <scope>provided</scope>
         </dependency>

@@ -9,4 +9,5 @@ import java.util.List;
 public interface ContinentDataAccess  {
 
     public abstract List<Continent> showAllContinents();
+    public abstract List<Continent> showDetailsAboutContinent(Integer id);
 }

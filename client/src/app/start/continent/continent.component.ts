@@ -7,13 +7,14 @@ import {ApiService} from "../../shared/service/api.service";
   styleUrls: ['./continent.component.css']
 })
 export class ContinentComponent implements OnInit {
-
-  private continents: any[] = [];
+  public continents: any[] = [];
+  current_selected: string;
 
   constructor(private api: ApiService) {
+
     this.api.getContinents().subscribe((data: any) => {
-      this.continents = data;
       console.log(data);
+      this.continents = data;
     });
 
     this.api.getCities().subscribe((data: any) => {
@@ -30,12 +31,13 @@ export class ContinentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getContinents();
   }
 
-  getContinents() {
-
+  onSelection(e, v){
+    this.api.showDetailsAboutContinent(e.id).subscribe((data: any) => {
+      console.log(data);
+    });
+    this.current_selected = e.continent;
   }
-
 
 }

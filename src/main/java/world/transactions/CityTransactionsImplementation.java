@@ -29,7 +29,7 @@ public class CityTransactionsImplementation implements CityDataAccess {
     @Override
     public void removeCity(String name) {
 		Query q = em.createNativeQuery("DELETE FROM city WHERE name = :city", City.class);
-		q.setParameter("world", name).executeUpdate();
+		q.setParameter("city", name).executeUpdate();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CityTransactionsImplementation implements CityDataAccess {
     @Override
     public String getCityByName(String name) {
     	Query q = em.createNativeQuery("SELECT * FROM city WHERE name = :city", City.class);
-    	q.setParameter("world", name);
+    	q.setParameter("city", name);
     	List<City> result = q.getResultList();
     	return result.toString();
     }
@@ -58,7 +58,7 @@ public class CityTransactionsImplementation implements CityDataAccess {
 
 	public City findByCityName(String name) {
 		Query q = em.createNativeQuery("SELECT * FROM city WHERE name= :city", City.class);
-		q.setParameter("world", name);
+		q.setParameter("city", name);
 		return (City)q.getSingleResult();
 		
 	}

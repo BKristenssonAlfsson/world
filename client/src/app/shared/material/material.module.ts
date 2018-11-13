@@ -4,10 +4,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
+  MatGridListModule,
   MatIconModule,
+  MatListModule,
   MatMenuModule,
+  MatSelectModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
 }
   from "@angular/material";
 
@@ -23,7 +27,11 @@ import {
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatListModule,
+    MatDialogModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

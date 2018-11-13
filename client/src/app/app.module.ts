@@ -11,7 +11,8 @@ import { CountryComponent } from './start/country/country.component';
 import { HomeComponent } from './start/home/home.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "./shared/service/api.service";
-import {Url} from "./shared/service/url";
+import { Url } from "./shared/service/url";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {Url} from "./shared/service/url";
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService, Url],
   bootstrap: [AppComponent]

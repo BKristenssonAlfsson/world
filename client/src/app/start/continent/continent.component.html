@@ -1,3 +1,12 @@
-<div *ngFor="let continent of continents">
-  {{continent.name}}
-</div>
+<mat-grid-list cols="10" rowHeight = "4rem">
+  <mat-grid-tile colspan="1" [rowspan]="6">
+    <mat-list>
+      <mat-selection-list *ngFor="let continent of continents; let i = index" #selectedContinent (selectionChange)="onSelection(continent)">
+        <mat-list-option>{{continent.continent}}</mat-list-option>
+      </mat-selection-list>
+    </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="9" [rowspan]="6">
+    {{current_selected}}
+  </mat-grid-tile>
+</mat-grid-list>

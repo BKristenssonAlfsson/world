@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Stateless
-@Path("/world")
+@Path("/city")
 public class CityResource{
 
   private Logger logger = LogManager.getLogger(CityResource.class.getName());

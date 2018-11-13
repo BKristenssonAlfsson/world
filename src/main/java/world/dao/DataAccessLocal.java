@@ -1,5 +1,7 @@
 package world.dao;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import world.domain.City;
 import world.domain.Continent;
 import world.domain.Country;
@@ -10,6 +12,7 @@ import java.util.List;
 
 @Local
 public interface DataAccessLocal {
+
   public void addCity(City city);
   public void removeCity(String name);
   public List<City> showAllCities();
@@ -19,4 +22,5 @@ public interface DataAccessLocal {
   public List<Continent> showAllContinents();
   public List<Country> showAllCountries();
   public List<Language> listAllLanguages();
+  public List<Continent> showDetailsAboutContinent(Integer continent);
 }
