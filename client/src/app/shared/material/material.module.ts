@@ -12,6 +12,8 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatTableModule,
+  MatPaginatorModule
 }
   from "@angular/material";
 
@@ -31,7 +33,9 @@ import {
     MatGridListModule,
     MatListModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }
