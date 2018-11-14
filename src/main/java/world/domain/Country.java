@@ -1,7 +1,6 @@
 package world.domain;
 
 import lombok.*;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -22,11 +21,11 @@ public class Country implements Serializable {
     @Column(name = "id")
     private int id;
     @Column(name = "continent")
-    private int continent;
+    private Integer continent;
     @Column(name = "country")
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Continent c;
+    @ManyToOne
+    @JoinTable(name="countries_on_continent")
+    Continent cont;
 }

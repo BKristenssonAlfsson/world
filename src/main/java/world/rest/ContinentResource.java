@@ -50,9 +50,9 @@ public class ContinentResource {
     @GET
     @Produces({"application/JSON"})
     @Path("{continentId}")
-    public Response showAllCountries(@PathParam("continentId") Integer id) {
+    public Response listAllCountriesOnContinent(@PathParam("continentId") Integer id) {
         try {
-            List<Continent> result = dal.showAllCountries(id);
+            List<Continent> result = dal.listAllCountriesOnContinent(id);
             return Response.ok(result).build();
         } catch (Exception e ) {
             return Response.status(409).build();

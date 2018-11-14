@@ -36,9 +36,11 @@ public class WorldDataAccess implements DataAccessLocal, DataAccessRemote {
   public void addCity(City city) {
     cityDataAccess.addCity(city);
   }
+
   public void removeCity(String city) {
     cityDataAccess.removeCity(city);
   }
+
   public List<City> showAllCities() {
     return cityDataAccess.showAllCities();
   }
@@ -61,7 +63,7 @@ public class WorldDataAccess implements DataAccessLocal, DataAccessRemote {
 
   public List<Continent> showAllContinents() { return continentDataAccess.showAllContinents(); }
 
-  public List<Continent> showAllCountries( Integer id) { return continentDataAccess.showAllCountries(id); }
+  public List<Continent> listAllCountriesOnContinent(Integer id) { return continentDataAccess.listAllCountriesOnContinent(id); }
 
   public List<Country> showAllCountries() { return countryDataAccess.showAllCountries(); }
 

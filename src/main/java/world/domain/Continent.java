@@ -1,10 +1,18 @@
 package world.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Getter
 @Entity
@@ -28,4 +36,6 @@ public class Continent implements Serializable {
     private int countries;
     @Column(name="languages")
     private int languages;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "continent")
+    private Set<Country> country;
 }
