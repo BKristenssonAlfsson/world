@@ -25,7 +25,7 @@ public class ContinentTransactionsImplementation implements ContinentDataAccess 
 
     @Override
     public List<Continent> listAllCountriesOnContinent(Integer id) {
-        Query q = em.createNativeQuery("SELECT continent.continent, country.country FROM continent JOIN country ON continent.id = country.continent WHERE continent.id = :id", Continent.class);
+        Query q = em.createNativeQuery("SELECT continent.languages, continent.id, continent.countries, continent.continent, country.country FROM continent JOIN country ON continent.id = country.continent WHERE continent.id = :id", Continent.class);
         q.setParameter("id", id);
         List<Continent> continent = q.getResultList();
         return continent;

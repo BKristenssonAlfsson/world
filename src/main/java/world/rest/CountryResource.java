@@ -18,13 +18,13 @@ import java.util.List;
 public class CountryResource {
 
     @Inject
-    private DataAccessLocal cdoal;
+    private DataAccessLocal dal;
 
     @GET
     @Produces({"application/JSON"})
     public Response showAllCountries() {
         try {
-            List<Country> result = cdoal.showAllCountries();
+            List<Country> result = dal.showAllCountries();
             return Response.ok(result).build();
         } catch ( Exception e ) {
             return Response.status(401).build();

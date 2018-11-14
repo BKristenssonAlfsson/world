@@ -36,7 +36,7 @@ public class ContinentResource {
             List<Continent> result = dal.listAllCountriesOnContinent(id);
             return Response.ok(result).build();
         } catch (Exception e ) {
-            return Response.status(409).build();
+            return Response.status(404).build();
         }
     }
 }
