@@ -27,7 +27,7 @@ export class ApiService {
     return this.httpClient.get(this.url.getBaseUrl() + this.url.getLanguages(), { headers: Headers.HeaderJSON() } );
   }
 
-  showDetailsAboutContinent(continent : string) {
+  showCountriesOnContinent(continent : string) {
     return this.httpClient.get(this.url.getBaseUrl() + this.url.getContinents() + "/" + continent, { headers: Headers.HeaderJSON() } );
   }
 }

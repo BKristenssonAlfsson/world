@@ -24,8 +24,4 @@ public class Country implements Serializable {
     private Integer continent;
     @Column(name = "country")
     private String name;
-
-    @ManyToOne
-    @JoinTable(name="countries_on_continent")
-    Continent cont;
 }
