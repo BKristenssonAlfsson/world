@@ -1,9 +1,6 @@
 package world.transactions;
 
 import world.domain.City;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
@@ -14,8 +11,6 @@ import java.util.List;
 @Stateless
 @Default
 public class CityTransactionsImplementation implements CityDataAccess {
-
-    private Logger logger = LogManager.getLogger(CityTransactionsImplementation.class.getName());
 
     @PersistenceContext(unitName="world")
     private EntityManager em;

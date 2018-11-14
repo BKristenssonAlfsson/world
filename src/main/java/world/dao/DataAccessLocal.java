@@ -20,6 +20,5 @@ public interface DataAccessLocal {
   public List<Continent> showAllContinents();
   public List<Country> showAllCountries();
   public List<Language> listAllLanguages();
-  public List<Continent> showDetailsAboutContinent(Integer continent);
   public List<Continent> listAllCountriesOnContinent(Integer continent);
 }

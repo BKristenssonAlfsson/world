@@ -19,7 +19,7 @@ export class CountryComponent implements OnInit {
       this.allCountries = data;
       this.allCountries.sort();
       this.dataSource = new MatTableDataSource<>(this.allCountries);
-      this.dataSource.paginator = this.paginator;
+   //   this.dataSource.paginator = this.paginator;
     });
   }
 

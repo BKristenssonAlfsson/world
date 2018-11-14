@@ -1,8 +1,5 @@
 package world.dao;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import world.domain.City;
 import world.domain.Language;
 import world.domain.Continent;
@@ -18,8 +15,6 @@ import java.util.List;
 
 @Stateless
 public class WorldDataAccess implements DataAccessLocal, DataAccessRemote {
-
-    private Logger logger = LogManager.getLogger(WorldDataAccess.class.getName());
 
   @Inject
   private CityDataAccess cityDataAccess;
@@ -55,10 +50,6 @@ public class WorldDataAccess implements DataAccessLocal, DataAccessRemote {
 
   public void updateCity(String name, String newName, Integer population) {
 	cityDataAccess.updateCity(name, newName, population);
-  }
-
-  public List<Continent> showDetailsAboutContinent(Integer id) {
-      return continentDataAccess.showDetailsAboutContinent(id);
   }
 
   public List<Continent> showAllContinents() { return continentDataAccess.showAllContinents(); }
