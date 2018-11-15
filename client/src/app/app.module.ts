@@ -13,6 +13,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "./shared/service/api.service";
 import { Url } from "./shared/service/url";
 import { ReactiveFormsModule } from "@angular/forms";
+import { CityComponent } from './start/city/city.component';
+import { LanguageComponent } from './start/language/language.component';
+import { UserComponent } from './start/user/user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ReactiveFormsModule } from "@angular/forms";
     StartComponent,
     ContinentComponent,
     CountryComponent,
-    HomeComponent
+    HomeComponent,
+    CityComponent,
+    LanguageComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

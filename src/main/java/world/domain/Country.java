@@ -20,7 +20,7 @@ public class Country implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    @Column(name = "continent")
+    @JoinColumn(name = "continent", referencedColumnName = "id")
     private Integer continent;
     @Column(name = "country")
     private String name;

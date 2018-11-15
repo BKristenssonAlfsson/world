@@ -16,6 +16,7 @@ export class CountryComponent implements OnInit {
 
   constructor(private api: ApiService) {
     this.api.getCountries().subscribe((data: any) => {
+      console.log(data);
       this.allCountries = data;
       this.allCountries.sort();
       this.dataSource = new MatTableDataSource<>(this.allCountries);

@@ -39,6 +39,7 @@ export class ContinentComponent implements OnInit {
       this.countries_on_continent = data[0].country.map(o => {
         return o.name;
       });
+      console.log(data);
       this.countries_on_continent.sort();
       this.countriesOne = this.countries_on_continent.splice(0,9);
       this.countriesTwo = this.countries_on_continent.splice(0,9);

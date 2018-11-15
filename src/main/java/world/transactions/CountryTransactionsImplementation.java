@@ -19,8 +19,7 @@ public class CountryTransactionsImplementation implements CountryDataAccess {
 
     @Override
     public List<Country> showAllCountries() {
-        Query q = em.createNativeQuery("SELECT * FROM country", Country.class);
-
+        Query q = em.createNativeQuery("SELECT country.*, continent.* FROM country JOIN continent ON country.continent = continent.id ORDER BY country.country", Country.class);
         List<Country> countries = q.getResultList();
         return countries;
     }
