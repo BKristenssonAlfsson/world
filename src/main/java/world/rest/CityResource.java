@@ -24,7 +24,7 @@ public class CityResource{
   @Path("{cityId}")
   public Response findCityByName( @PathParam("cityId") String name ) {
     try {
-      String result = dal.getCityByName(name);
+        List<City> result = dal.getCityByName(name);
         Jsonb jsonb = JsonbBuilder.create();
         String jsonString = jsonb.toJson(result);
       return Response.ok(jsonString).build();

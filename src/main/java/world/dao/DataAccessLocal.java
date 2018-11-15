@@ -14,7 +14,7 @@ public interface DataAccessLocal {
   public void addCity(City city);
   public void removeCity(String name);
   public List<City> showAllCities();
-  public String getCityByName(String name);
+  public List<City> getCityByName(String name);
   public List<City> getCitiesBetweenMinMaxPopulation(String cityOne, String cityTwo);
   public void updateCity(String name, String newName, Integer population);
   public List<Continent> showAllContinents();

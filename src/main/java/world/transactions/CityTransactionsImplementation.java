@@ -36,11 +36,11 @@ public class CityTransactionsImplementation implements CityDataAccess {
     }
 
     @Override
-    public String getCityByName(String name) {
+    public List<City> getCityByName(String name) {
     	Query q = em.createNativeQuery("SELECT * FROM city WHERE name = :city", City.class);
     	q.setParameter("city", name);
     	List<City> result = q.getResultList();
-    	return result.toString();
+    	return result;
     }
 
     public List<City> getCitiesBetweenMinMaxPopulation(String min, String max){

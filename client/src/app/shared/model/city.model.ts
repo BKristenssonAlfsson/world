@@ -1,7 +1,9 @@
 export class City {
-  id: number;
-  name: string;
-  population:number;
+  id: any;
+  name: any;
+  population:any;
   country:any;
   continent:any;
+
+  constructor(id: any, name: any, population: any, country: any, continent: any ) {}
 }

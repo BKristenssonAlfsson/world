@@ -40,7 +40,7 @@ public class WorldDataAccess implements DataAccessLocal, DataAccessRemote {
     return cityDataAccess.showAllCities();
   }
 
-  public String getCityByName(String name) {
+  public List<City> getCityByName(String name) {
     return cityDataAccess.getCityByName(name);
   }
 

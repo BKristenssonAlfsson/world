@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {City} from "../../shared/model/city.model";
 
 @Component({
   selector: 'app-dialog',
@@ -10,19 +11,26 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class DialogComponent implements OnInit {
 
   cityForm: FormGroup;
+  city = new City('', '', '', '', '');
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: string,
               private formBuilder: FormBuilder) {
+
+    const temp = Object.values(this.data);
+    this.city.continent = temp[0][0]['continent'];
+    this.city.country = temp[0][0]['country'];
+    this.city.name = temp[0][0]['name'];
+    this.city.population = temp[0][0]['population'];
+
   }
 
   ngOnInit() {
     this.cityForm = this.formBuilder.group({
-      cityName: [ {value: this.data["city"], disabled: true} ],
-      country: [ {value: 'Temp', disabled: true} ],
-      continent: [ {value: 'Try', disabled: true} ],
-      population: [ {value: '54354', disabled: true} ]
+      cityName: [ {value: this.city.name, disabled: true} ],
+      country: [ {value: this.city.country, disabled: true} ],
+      continent: [ {value: this.city.continent, disabled: true} ],
+      population: [ {value: this.city.population, disabled: true} ]
     });
   }
-
 }
