@@ -4,6 +4,8 @@ import world.dao.DataAccessLocal;
 import world.domain.City;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -23,7 +25,9 @@ public class CityResource{
   public Response findCityByName( @PathParam("cityId") String name ) {
     try {
       String result = dal.getCityByName(name);
-      return Response.ok(result).build();
+        Jsonb jsonb = JsonbBuilder.create();
+        String jsonString = jsonb.toJson(result);
+      return Response.ok(jsonString).build();
     } catch ( Exception e ) {
       return Response.status(403).build();
     }

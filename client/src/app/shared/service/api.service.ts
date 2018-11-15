@@ -15,8 +15,8 @@ export class ApiService {
     return this.httpClient.get(this.url.getBaseUrl() + this.url.getContinents(), { headers : Headers.HeaderJSON() } );
   }
 
-  getCities() {
-    return this.httpClient.get(this.url.getBaseUrl() + this.url.getCities(), { headers : Headers.HeaderJSON() } );
+  getCities(city: string) {
+    return this.httpClient.get(this.url.getBaseUrl() + this.url.getCities() + "/" + city, { headers : Headers.HeaderJSON() } );
   }
 
   getCountries() {

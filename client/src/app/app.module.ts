@@ -12,10 +12,11 @@ import { HomeComponent } from './start/home/home.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "./shared/service/api.service";
 import { Url } from "./shared/service/url";
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CityComponent } from './start/city/city.component';
 import { LanguageComponent } from './start/language/language.component';
 import { UserComponent } from './start/user/user.component';
+import { DialogComponent } from './start/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +28,18 @@ import { UserComponent } from './start/user/user.component';
     HomeComponent,
     CityComponent,
     LanguageComponent,
-    UserComponent
+    UserComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
+  entryComponents: [DialogComponent],
   providers: [ApiService, Url],
   bootstrap: [AppComponent]
 })
