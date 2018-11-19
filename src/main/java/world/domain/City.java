@@ -15,6 +15,10 @@ import java.io.Serializable;
 @XmlRootElement
 public class City implements Serializable {
 
+// SELECT city.population, city.name, country.country, continent.continent FROM
+// CITY JOIN COUNTRY ON city.country = country.id JOIN continent ON
+// city.continent = continent.id WHERE city.id = 1
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -25,10 +29,12 @@ public class City implements Serializable {
     private String name;
     @Column(name = "population")
     private int population;
-    @Column(name = "country")
-    private int country;
-    @Column(name = "continent")
-    private int continent;
+    @OneToOne
+    @JoinColumn(name = "country", referencedColumnName = "id")
+    private Country country;
+    @OneToOne
+    @JoinColumn(name = "continent", referencedColumnName = "id")
+    private Continent continent;
 }
 
 

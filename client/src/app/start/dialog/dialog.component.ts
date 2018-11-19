@@ -18,8 +18,9 @@ export class DialogComponent implements OnInit {
               private formBuilder: FormBuilder) {
 
     const temp = Object.values(this.data);
-    this.city.continent = temp[0][0]['continent'];
-    this.city.country = temp[0][0]['country'];
+    console.log(this.data);
+    this.city.continent = temp[0][0]['continent'].continent;
+    this.city.country = temp[0][0]['country'].name;
     this.city.name = temp[0][0]['name'];
     this.city.population = temp[0][0]['population'];
 

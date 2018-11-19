@@ -30,14 +30,13 @@ public class CityTransactionsImplementation implements CityDataAccess {
     @Override
     public List<City> showAllCities() {
 		Query q = em.createNativeQuery("SELECT * FROM city", City.class);
-
 		List<City> cities = q.getResultList();
 		return cities;
     }
 
     @Override
     public List<City> getCityByName(String name) {
-    	Query q = em.createNativeQuery("SELECT * FROM city WHERE name = :city", City.class);
+    	Query q = em.createNativeQuery("SELECT * FROM CITY JOIN COUNTRY ON city.country = country.id JOIN continent ON city.continent = continent.id WHERE city.name = :city", City.class);
     	q.setParameter("city", name);
     	List<City> result = q.getResultList();
     	return result;
@@ -55,7 +54,7 @@ public class CityTransactionsImplementation implements CityDataAccess {
 		Query q = em.createNativeQuery("SELECT * FROM city WHERE name= :city", City.class);
 		q.setParameter("city", name);
 		return (City)q.getSingleResult();
-		
+
 	}
     
 	@Override

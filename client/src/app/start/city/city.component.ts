@@ -20,6 +20,7 @@ export class CityComponent implements OnInit {
   }
 
   openDialog(data: string): void {
+
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {city: data}

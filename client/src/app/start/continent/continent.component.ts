@@ -50,7 +50,6 @@ export class ContinentComponent implements OnInit {
       this.countriesSeven = this.countries_on_continent.splice(0,9);
       this.countriesEight = this.countries_on_continent.splice(0,9);
     });
-;
     this.current_selected = e.continent;
   }
 }
