@@ -17,7 +17,7 @@ public class Country implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private long id;
     @Column(name = "continent")
     private Integer continent;
     @Column(name = "country")

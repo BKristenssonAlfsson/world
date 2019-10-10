@@ -18,7 +18,7 @@ public class Language implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @Column(name="language", length = 25)
     private String language;

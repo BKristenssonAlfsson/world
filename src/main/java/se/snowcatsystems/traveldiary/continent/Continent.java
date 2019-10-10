@@ -21,13 +21,13 @@ public class Continent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private long id;
     @Column(name="continent")
     private String continent;
     @Column(name="countries")
     private int countries;
     @Column(name="languages")
     private int languages;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "continent")
-    private Set<Country> country;
+//    @OneToMany(mappedBy = "continent")
+//    private Set<Country> country;
 }
