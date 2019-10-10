@@ -20,21 +20,18 @@ public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
-    @Column
-    private int continent;
-    @Column
-    private int country;
- /*   @OneToOne
-    @JoinColumn(name = "continent", referencedColumnName = "id")
-    private Continent continent;
-    @OneToOne
-    @JoinColumn(name = "country", referencedColumnName = "id")
-    private Country country; */
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "population")
     private int population;
+    @OneToOne
+    @JoinColumn(name = "continent", referencedColumnName = "id")
+    private Continent continent;
+    @OneToOne
+    @JoinColumn(name = "country", referencedColumnName = "id")
+    private Country country;
+
 }
 
 

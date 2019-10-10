@@ -2,6 +2,7 @@ package se.snowcatsystems.traveldiary.continent;
 
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.city.City;
 import se.snowcatsystems.traveldiary.country.Country;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,15 +20,12 @@ public class Continent implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private Long id;
     @Column(name="continent")
     private String continent;
     @Column(name="countries")
-    private int countries;
+    private Integer countries;
     @Column(name="languages")
-    private int languages;
-//    @OneToMany(mappedBy = "continent")
-//    private Set<Country> country;
+    private Integer languages;
 }
