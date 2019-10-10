@@ -1,9 +1,7 @@
 package se.snowcatsystems.traveldiary.language;
 
 import lombok.*;
-
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @Entity
@@ -13,7 +11,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@XmlRootElement
 public class Language implements Serializable {
 
     private static final long serialVersionUID = 1L;

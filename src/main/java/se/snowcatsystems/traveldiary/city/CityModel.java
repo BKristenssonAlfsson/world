@@ -1,4 +1,4 @@
-package world.model;
+package se.snowcatsystems.traveldiary.city;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

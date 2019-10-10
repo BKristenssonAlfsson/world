@@ -1,18 +1,13 @@
-package se.snowcatsystems.traveldiary.country;
+package se.snowcatsystems.traveldiary.continent;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.*;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.hibernate.Hibernate;
 import se.snowcatsystems.traveldiary.country.Country;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-import static javax.persistence.CascadeType.ALL;
 
 @Getter
 @Entity

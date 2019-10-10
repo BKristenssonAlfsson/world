@@ -1,9 +1,10 @@
-package world.domain;
+package se.snowcatsystems.traveldiary.city;
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.continent.Continent;
+import se.snowcatsystems.traveldiary.country.Country;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @Getter
@@ -12,12 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @Entity
-@XmlRootElement
 public class City implements Serializable {
-
-// SELECT city.population, city.name, country.country, continent.continent FROM
-// CITY JOIN COUNTRY ON city.country = country.id JOIN continent ON
-// city.continent = continent.id WHERE city.id = 1
 
     private static final long serialVersionUID = 1L;
 
@@ -25,16 +21,16 @@ public class City implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+    @OneToOne
+    @JoinColumn(name = "continent", referencedColumnName = "id")
+    private Continent continent;
+    @OneToOne
+    @JoinColumn(name = "country", referencedColumnName = "id")
+    private Country country;
     @Column(name = "name")
     private String name;
     @Column(name = "population")
     private int population;
-    @OneToOne
-    @JoinColumn(name = "country", referencedColumnName = "id")
-    private Country country;
-    @OneToOne
-    @JoinColumn(name = "continent", referencedColumnName = "id")
-    private Continent continent;
 }
 
 
