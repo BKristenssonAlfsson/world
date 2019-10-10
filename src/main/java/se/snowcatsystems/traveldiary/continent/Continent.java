@@ -3,11 +3,9 @@ package se.snowcatsystems.traveldiary.continent;
 
 import lombok.*;
 import se.snowcatsystems.traveldiary.country.Country;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
 
 @Getter
 @Entity

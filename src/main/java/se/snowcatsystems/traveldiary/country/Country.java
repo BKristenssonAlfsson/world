@@ -22,6 +22,4 @@ public class Country implements Serializable {
     private Integer continent;
     @Column(name = "country")
     private String name;
-
-
 }
