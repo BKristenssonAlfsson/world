@@ -8,7 +8,8 @@ Hopefully in the end it will be possible to have users list their travel ways ar
 
 Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my rest end points are working.
 
-* /city  (Type: GET, fecthes all cities in the database)
+* /city  (Type: GET, fetches all cities in the database)
+* /continent (Type: GET, fetches all continents in the database)
 
 ---
 
