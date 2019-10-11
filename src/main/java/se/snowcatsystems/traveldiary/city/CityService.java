@@ -11,7 +11,15 @@ public class CityService {
     @Autowired
     private CityRepository cityRepository;
 
-    public List<City> findAll() {
-        return cityRepository.findAll();
+    private CityModel cityModel = new CityModel();
+    private City city = new City();
+
+    public List<CityModel> findAll() {
+
+        List<City> cities = cityRepository.findAll();
+
+        List<CityModel> models = cityModel.CityModel(cities);
+
+        return models;
     }
 }

@@ -1,15 +1,37 @@
 package se.snowcatsystems.traveldiary.city;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class CityModel {
 
-    private int id;
+    private Long id;
     private String name;
     private int population;
-    private int country;
-    private int continent;
+    private String country;
+    private String continent;
+
+    public List<CityModel> CityModel(List<City> cities) {
+
+        List<CityModel> models = new ArrayList<>();
+
+        cities.forEach(city -> {
+            CityModel cityModel = new CityModel();
+            cityModel.id = city.getId();
+            cityModel.name = city.getName();
+            cityModel.population = city.getPopulation();
+            cityModel.country = city.getCountry().getName();
+            cityModel.continent = city.getContinent().getContinent();
+            models.add(cityModel);
+        });
+
+        return models;
+    }
 }
