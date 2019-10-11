@@ -234,7 +234,7 @@ INSERT INTO country VALUES
 INSERT INTO continent VALUES
     (1.0,'Africa',NULL,2138),
     (2.0,'Asia',NULL,2301),
-    (3.0,'Europe ',NULL,286),
+    (3.0,'Europe',NULL,286),
     (4.0,'North America',NULL,1064),
     (5.0,'Oceania',NULL,1313),
     (6.0,'South America',NULL,1064),

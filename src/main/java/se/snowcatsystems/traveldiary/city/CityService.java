@@ -14,11 +14,11 @@ public class CityService {
     private CityModel cityModel = new CityModel();
     private City city = new City();
 
-    public List<CityModel> findAll() {
+    public List<CityModel> findAllCities() {
 
         List<City> cities = cityRepository.findAll();
 
-        List<CityModel> models = cityModel.CityModel(cities);
+        List<CityModel> models = cityModel.cityModelList(cities);
 
         return models;
     }

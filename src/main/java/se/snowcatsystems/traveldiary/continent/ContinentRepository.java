@@ -1,4 +1,6 @@
 package se.snowcatsystems.traveldiary.continent;
 
-public interface ContinentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ContinentRepository extends JpaRepository<Continent, Long> {
 }

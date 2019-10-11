@@ -19,7 +19,7 @@ public class CityController {
     @GetMapping
     public ResponseEntity<List<CityModel>> getAllCities() {
 
-        List<CityModel> cities = cityService.findAll();
+        List<CityModel> cities = cityService.findAllCities();
 
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }

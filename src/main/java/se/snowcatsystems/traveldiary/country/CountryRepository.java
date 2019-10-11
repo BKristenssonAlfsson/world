@@ -1,4 +1,6 @@
 package se.snowcatsystems.traveldiary.country;
 
-public interface CountryRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CountryRepository extends JpaRepository<Country, Long> {
 }

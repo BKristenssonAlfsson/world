@@ -18,7 +18,7 @@ public class CityModel {
     private String country;
     private String continent;
 
-    public List<CityModel> CityModel(List<City> cities) {
+    public List<CityModel> cityModelList(List<City> cities) {
 
         List<CityModel> models = new ArrayList<>();
 
