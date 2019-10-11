@@ -10,6 +10,7 @@ Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my
 
 * /city  (Type: GET, fetches all cities in the database)
 * /continent (Type: GET, fetches all continents in the database)
+* /country (Type: GET, fetches all countries in the database)
 
 ---
 
