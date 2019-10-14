@@ -20,8 +20,6 @@ public class ContinentController {
 
         List<ContinentModel> continents = continentService.findAllContinents();
 
-        System.out.println(continents);
-
         return new ResponseEntity<>(continents, HttpStatus.OK);
     }
 }
