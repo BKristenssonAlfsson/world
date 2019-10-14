@@ -24,28 +24,47 @@ public class ContinentService {
 
         List<Continent> continents = continentRepository.findAll();
         List<Country> country = countryRepository.findAll();
-        Long count[] = new Long[7];
-
-        for ( int i = 0; i < 7; i++ ) {
-            final int countryNumber = i;
-            count[i] = country.stream().filter(c -> c.getContinent().equals(countryNumber)).count();
-        }
-
+        int count[] = new int[6];
         List<ContinentModel> models = continentModel.getModelList(continents);
 
+        country.forEach(c -> {
+            if ( c.getContinent().getContinent().equals("Africa")) {
+                count[0]++;
+            } else if (c.getContinent().getContinent().equals("Asia")) {
+                count[1]++;
+            }else if (c.getContinent().getContinent().equals("Europe")) {
+                count[2]++;
+            }else if (c.getContinent().getContinent().equals("North America")) {
+                count[3]++;
+            }else if (c.getContinent().getContinent().equals("Oceania")) {
+                count[4]++;
+            }else if (c.getContinent().getContinent().equals("South America")) {
+                count[5]++;
+            }
+        });
+
         models.forEach(model -> {
-            if ( model.getContinent().equals("Africa")) {
-                model.setCountries(count[1].intValue());
-            } else if (model.getContinent().equals("Asia")) {
-                model.setCountries(count[2].intValue());
-            }else if (model.getContinent().equals("Europe")) {
-                model.setCountries(count[3].intValue());
-            }else if (model.getContinent().equals("North America")) {
-                model.setCountries(count[4].intValue());
-            }else if (model.getContinent().equals("Oceania")) {
-                model.setCountries(count[5].intValue());
-            }else if (model.getContinent().equals("South America")) {
-                model.setCountries(count[6].intValue());
+            switch (model.getContinent()) {
+                case "Africa":
+                    model.setCountries(count[0]);
+                    break;
+                case "Asia":
+                    model.setCountries(count[1]);
+                    break;
+                case "Europe":
+                    model.setCountries(count[2]);
+                    break;
+                case "North America":
+                    model.setCountries(count[3]);
+                    break;
+                case "Oceania":
+                    model.setCountries(count[4]);
+                    break;
+                case "South America":
+                    model.setCountries(count[5]);
+                    break;
+                default:
+                    model.setCountries(0);
             }
         });
 

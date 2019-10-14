@@ -1,6 +1,8 @@
 package se.snowcatsystems.traveldiary.country;
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.continent.Continent;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,8 +19,9 @@ public class Country implements Serializable {
     @Id
     @Column(name = "id")
     private Long id;
-    @Column(name = "continent")
-    private Integer continent;
+    @ManyToOne
+    @JoinColumn(name="continent")
+    private Continent continent;
     @Column(name = "country")
     private String name;
 }

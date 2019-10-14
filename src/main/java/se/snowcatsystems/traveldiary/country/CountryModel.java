@@ -1,6 +1,7 @@
 package se.snowcatsystems.traveldiary.country;
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.continent.Continent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class CountryModel {
 
     private Long id;
-    private Integer continent;
+    private String continent;
     private String name;
 
     public List<CountryModel> generateModels(List<Country> entity) {
@@ -23,8 +24,8 @@ public class CountryModel {
         entity.forEach(model -> {
             CountryModel countryModel = new CountryModel();
             countryModel.id = model.getId();
-            countryModel.continent = model.getContinent();
             countryModel.name = model.getName();
+            countryModel.continent = model.getContinent().getContinent();
             cm.add(countryModel);
         });
 
