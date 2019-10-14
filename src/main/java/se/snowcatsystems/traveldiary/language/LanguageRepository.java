@@ -1,4 +1,6 @@
 package se.snowcatsystems.traveldiary.language;
 
-public interface LanguageRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LanguageRepository extends JpaRepository<Language, Long> {
 }
