@@ -20,6 +20,14 @@ No frontend planned yet. Feel free to fork and build your own version.
 
 I might do a Angular or Vue frontend one day, but for now, focus is 100% backend.
 
+## SQL
+
+In application.properties, switch `spring.datasource.initialization-mode=never` to
+`spring.datasource.initialization-mode=always`. When deploying, tables will be created
+and so will the JoinTable be. Then copy paste `country_language.sql` into the 
+newly created JoinTable.
+
+
 ## Contact and Licence
 
 It's an open source project. Used official data about population in different cities.

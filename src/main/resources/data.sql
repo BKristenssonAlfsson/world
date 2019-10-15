@@ -369,7 +369,7 @@ INSERT INTO language VALUES
     (126.0,'Magar'),
     (127.0,'Maithili'),
     (128.0,'Malagasy'),
-    (129.0,'Malagasy'),
+    (129.0,'Creole'),
     (130.0,'Malay'),
     (131.0,'Malayalam'),
     (132.0,'Mandarin'),
