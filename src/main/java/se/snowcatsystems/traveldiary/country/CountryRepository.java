@@ -6,6 +6,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
-    @Query(value = "SELECT country FROM Country WHERE country = :country", nativeQuery = true)
+    @Query(value = "SELECT * FROM Country WHERE country = :country", nativeQuery = true)
     Country findByName(@Param("country") String country);
 }

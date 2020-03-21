@@ -26,6 +26,9 @@ In application.properties, switch `spring.datasource.initialization-mode=never` 
 `spring.datasource.initialization-mode=always`. When deploying, tables will be created
 and so will the JoinTable be. Then copy paste `country_language.sql` into the 
 newly created JoinTable.
+If a column is generated on wrong place, easiest is to go to mysql terminal and write:
+
+```alter table <tablename>> MODIFY COLUMN <columnname> <type> AFTER <column>;```
 
 
 ## Contact and Licence

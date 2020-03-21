@@ -30,6 +30,7 @@ public class ContinentModel {
             models.add(continentModel);
         });
 
+        System.out.println(models);
         return models;
     }
 }

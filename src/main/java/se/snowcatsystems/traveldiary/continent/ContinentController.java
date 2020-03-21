@@ -17,7 +17,6 @@ public class ContinentController {
 
     @GetMapping
     public ResponseEntity<List<ContinentModel>> getAllContinents() {
-
         List<ContinentModel> continents = continentService.findAllContinents();
 
         return new ResponseEntity<>(continents, HttpStatus.OK);

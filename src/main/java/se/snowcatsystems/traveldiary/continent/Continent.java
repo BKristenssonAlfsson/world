@@ -6,6 +6,8 @@ import se.snowcatsystems.traveldiary.country.Country;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -27,4 +29,8 @@ public class Continent implements Serializable {
     private Integer countries;
     @Column(name="languages")
     private Integer languages;
+    @OneToMany(mappedBy = "continent",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true)
+    private List<Country> country = new ArrayList<>();
 }

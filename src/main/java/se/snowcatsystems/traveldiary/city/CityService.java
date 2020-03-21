@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.snowcatsystems.traveldiary.continent.Continent;
 import se.snowcatsystems.traveldiary.continent.ContinentRepository;
+import se.snowcatsystems.traveldiary.country.Country;
 import se.snowcatsystems.traveldiary.country.CountryRepository;
 
 import java.util.List;
@@ -38,8 +39,11 @@ public class CityService {
 
             city.setName(cityModel.getName());
             city.setPopulation(cityModel.getPopulation());
-            city.setCountry(countryRepository.findByName(cityModel.getCountry()));
-            city.setContinent(continentRepository.findByName(cityModel.getContinent()));
+
+            Country test = countryRepository.findByName(cityModel.getCountry());
+        System.out.println(test.toString());
+        //    city.getCountry().add(test);
+//            city.setContinent(continentRepository.findByName(cityModel.getContinent()));
 
             System.out.println(city.toString());
 
