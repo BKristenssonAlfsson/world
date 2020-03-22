@@ -38,13 +38,7 @@ public class CityService {
             city.setPopulation(cityModel.getPopulation());
             Country country = countryRepository.findByName(cityModel.getCountry());
             city.setCountry(country);
-        System.out.println(country.toString());
-  //          city.setContinent(city.getContinent());
-  //          city.setContinent(country.getContinent());
-//          city.setContinent(continentRepository.findByName(cityModel.getContinent()));
-
-//            System.out.println(city.toString());
-            //cityRepository.save(city);
+            cityRepository.save(city);
         return null;
     }
 }
