@@ -28,6 +28,7 @@ public class CityModel {
             cityModel.name = city.getName();
             cityModel.population = city.getPopulation();
             cityModel.country = city.getCountry().getName();
+            cityModel.continent = city.getCountry().getContinent().getContinent();
             models.add(cityModel);
         });
 
