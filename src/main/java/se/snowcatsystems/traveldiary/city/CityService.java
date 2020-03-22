@@ -32,8 +32,6 @@ public class CityService {
     }
 
     public CityModel storeCity(CityModel cityModel) {
-        //Requires Cityname, Population and Country
-
             city.setName(cityModel.getName());
             city.setPopulation(cityModel.getPopulation());
             Country country = countryRepository.findByName(cityModel.getCountry());

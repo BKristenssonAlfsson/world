@@ -8,7 +8,8 @@ Hopefully in the end it will be possible to have users list their travel ways ar
 
 Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my rest end points are working.
 
-* /city  (Type: GET, fetches all cities in the database)
+* /city (Type: GET, fetches all cities in the database)
+* /city (Type: POST, [Body]("#json-bodies). Adds a new city.)
 * /continent (Type: GET, fetches all continents in the database)
 * /country (Type: GET, fetches all countries in the database)
 
@@ -30,6 +31,17 @@ If a column is generated on wrong place, easiest is to go to mysql terminal and 
 
 ```alter table <tablename>> MODIFY COLUMN <columnname> <type> AFTER <column>;```
 
+## JSON bodies
+
+```
+Add a city
+    "Cityname":"String",
+    "Population": Integer,
+    "Country": String
+
+Returns 200 OK if added.
+Returns 406 Not Acceptable if missing parameters
+```
 
 ## Contact and Licence
 
