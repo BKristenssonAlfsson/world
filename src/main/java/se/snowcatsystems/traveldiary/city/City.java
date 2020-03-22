@@ -11,7 +11,6 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 public class City implements Serializable {
 
@@ -25,13 +24,8 @@ public class City implements Serializable {
     private String name;
     @Column(name = "population")
     private int population;
-    @OneToOne
-    @JoinColumn(name = "continent", referencedColumnName = "id")
-    private Continent continent;
-    @OneToOne
-    @JoinColumn(name = "country", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Country country;
-
 }
 
 

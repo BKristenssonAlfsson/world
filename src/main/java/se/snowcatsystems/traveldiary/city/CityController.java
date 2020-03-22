@@ -24,7 +24,6 @@ public class CityController {
 
     @PostMapping
     public ResponseEntity<CityModel> saveCity(@RequestBody CityModel newCity) {
-
         CityModel city = cityService.storeCity(newCity);
 
         return new ResponseEntity<>(city, HttpStatus.OK);

@@ -29,8 +29,6 @@ public class ContinentModel {
             continentModel.languages = continent.getLanguages();
             models.add(continentModel);
         });
-
-        System.out.println(models);
         return models;
     }
 }

@@ -1,11 +1,13 @@
 package se.snowcatsystems.traveldiary.country;
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.city.City;
 import se.snowcatsystems.traveldiary.continent.Continent;
 import se.snowcatsystems.traveldiary.language.Language;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,7 +15,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Country implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,6 +26,10 @@ public class Country implements Serializable {
     private Continent continent;
     @Column(name = "country")
     private String name;
+    @OneToMany(mappedBy = "country",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private Set<City> city = new HashSet<>();
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE

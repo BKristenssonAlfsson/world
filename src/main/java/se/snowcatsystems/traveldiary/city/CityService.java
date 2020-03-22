@@ -28,25 +28,23 @@ public class CityService {
 
         List<City> cities = cityRepository.findAll();
 
-        List<CityModel> models = cityModel.cityModelList(cities);
-
-        return models;
+        return cityModel.cityModelList(cities);
     }
 
     public CityModel storeCity(CityModel cityModel) {
         //Requires Cityname, Population and Country
-            System.out.println(cityModel.toString());
 
             city.setName(cityModel.getName());
             city.setPopulation(cityModel.getPopulation());
+            Country country = countryRepository.findByName(cityModel.getCountry());
+            city.setCountry(country);
+        System.out.println(country.toString());
+  //          city.setContinent(city.getContinent());
+  //          city.setContinent(country.getContinent());
+//          city.setContinent(continentRepository.findByName(cityModel.getContinent()));
 
-            Country test = countryRepository.findByName(cityModel.getCountry());
-        System.out.println(test.toString());
-        //    city.getCountry().add(test);
-//            city.setContinent(continentRepository.findByName(cityModel.getContinent()));
-
-            System.out.println(city.toString());
-
+//            System.out.println(city.toString());
+            //cityRepository.save(city);
         return null;
     }
 }

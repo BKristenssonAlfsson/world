@@ -2,11 +2,13 @@ package se.snowcatsystems.traveldiary.continent;
 
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.city.City;
 import se.snowcatsystems.traveldiary.country.Country;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -32,5 +34,5 @@ public class Continent implements Serializable {
     @OneToMany(mappedBy = "continent",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
-    private List<Country> country = new ArrayList<>();
+    private Set<Country> country = new HashSet<>();
 }
