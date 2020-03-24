@@ -481,6 +481,12 @@ INSERT INTO language VALUES
     (238,'Slovene'),
     (239,'Tajik');
 
+CREATE TABLE IF NOT EXISTS city (
+    `id` INT,
+    `name` VARCHAR(23) CHARACTER SET utf8,
+    `population` NUMERIC(11, 3),
+    `country` INT
+);
 INSERT INTO city VALUES
     (1,'Stockholm',1515017,175),
     (2,'Göteborg',590580,175),
@@ -1556,3 +1562,4 @@ INSERT INTO city VALUES
     (1068,'Pagan Village',50,233),
     (1069,'Agrihan Village',20,233),
     (1070,'Alamagan Village',15,233);
+

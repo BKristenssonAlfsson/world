@@ -21,15 +21,19 @@ No frontend planned yet. Feel free to fork and build your own version.
 
 I might do a Angular or Vue frontend one day, but for now, focus is 100% backend.
 
-## SQL
+## Init database
 
-In application.properties, switch `spring.datasource.initialization-mode=never` to
-`spring.datasource.initialization-mode=always`. When deploying, tables will be created
-and so will the JoinTable be. Then copy paste `country_language.sql` into the 
-newly created JoinTable.
-If a column is generated on wrong place, easiest is to go to mysql terminal and write:
+I'm using Mysql 8 for this project with a database named `traveldiary` for now.
+Follow these steps to generate and autopopulate the database:
 
-```alter table <tablename>> MODIFY COLUMN <columnname> <type> AFTER <column>;```
+* Deploy the application. Tables are generated. 
+* In application.properties, switch `spring.datasource.initialization-mode=never` to
+`spring.datasource.initialization-mode=always`. 
+* In MySQL console, usually Country entity is mirrored wrong: <br> 
+Write `alter table country MODIFY COLUMN country VARCHAR(255) AFTER continent_id;`
+* Deploy again.
+* Switch `spring.datasource.initialization-mode=always` back to `spring.datasource.initialization-mode=never`.
+* Copy paste `country_language.sql` into the console and populate the join table.
 
 ## JSON bodies
 
