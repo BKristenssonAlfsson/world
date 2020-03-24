@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="DEBUG">
+    <Properties>
+        <Property name="LOG_ROOT">C:/Users/Logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <File name="LogToFile" fileName="${LOG_ROOT}/world.log" append="true" filePattern="${LOG_ROOT}/world-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="LogToFile" level="debug"/>
+            <AppenderRef ref="LogToConsole" level="debug"/>
+        </Root>
+    </Loggers>
+</Configuration>
