@@ -16,7 +16,6 @@ public class ContinentController {
 
     private final static Logger logger = LogManager.getLogger(ContinentController.class);
 
-    
     @Autowired
     private ContinentService continentService;
 
