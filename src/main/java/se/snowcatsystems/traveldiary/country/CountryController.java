@@ -16,7 +16,7 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<CountryModel>> getAllCountries() {
         List<CountryModel> model = countryService.getAllCountries();
         return new ResponseEntity<>(model, HttpStatus.OK);

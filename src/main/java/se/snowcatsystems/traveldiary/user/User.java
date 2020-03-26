@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -23,32 +23,32 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
     @Column(nullable = false, unique = true)
     private String username;
 
-    @NotEmpty
     @Column()
     private String password;
 
-    @NotEmpty
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotEmpty
     @Column(name = "firstname")
     private String firstName;
 
-    @NotEmpty
     @Column(name = "lastname")
     private String lastName;
 
-    @NotEmpty
     @Column(name = "last_login")
-    private Timestamp timestamp;
+    private Instant timestamp;
 
-    private int active = 1;
+    @Column(name = "created")
+    private Instant createdTimestamp;
 
-    @ElementCollection
+    private Integer active = 1;
+
+    private String permissions = "";
+
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Role> roles;
+
 }
