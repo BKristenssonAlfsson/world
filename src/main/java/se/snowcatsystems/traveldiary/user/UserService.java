@@ -23,19 +23,25 @@ public class UserService {
 
     public Boolean registerNewUser(UserModel userModel) {
         final User user = new User();
-        //TODO Check if user is already created, if so return true
         Instant instant = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-        user.setPassword(passwordEncoder.encode(userModel.getPassword()));
+
         user.setUsername(userModel.getUsername());
+        user.setPassword(passwordEncoder.encode(userModel.getPassword()));
+        user.setFirstName(userModel.getFirstName());
+        user.setLastName(userModel.getLastName());
+        user.setEmail(userModel.getEmail());
+        user.setLastLogin(instant);
+        user.setCreatedTimestamp(instant);
         user.setActive(user.getActive());
         user.setRoles(userModel.getRole());
-        user.setTimestamp(instant);
-        user.setFirstName("FirstName");
-        user.setLastName("LastName");
-        user.setEmail("S@S.t");
-        user.setCreatedTimestamp(instant);
+        user.setActive(userModel.getActive());
 
-        userRepository.save(user);
-        return false;
+        User exist = userRepository.findByUsername(user.getUsername());
+        if ( exist == null ) {
+            userRepository.save(user);
+            return false;
+        } else {
+            return true;
+        }
     }
 }

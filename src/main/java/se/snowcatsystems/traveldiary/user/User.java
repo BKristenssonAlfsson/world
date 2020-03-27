@@ -39,12 +39,12 @@ public class User implements Serializable {
     private String lastName;
 
     @Column(name = "last_login")
-    private Instant timestamp;
+    private Instant lastLogin;
 
     @Column(name = "created")
     private Instant createdTimestamp;
 
-    private Integer active = 1;
+    private Integer active;
 
     private String permissions = "";
 

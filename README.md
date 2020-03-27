@@ -9,10 +9,10 @@ Hopefully in the end it will be possible to have users list their travel ways ar
 Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my rest end points are working.
 
 * /city (Type: GET, fetches all cities in the database)
-* /city (Type: POST, [Body]("#json-bodies). Adds a new city.)
+* /city (Type: POST, [Body](#add-a-city). Adds a new city)
 * /continent (Type: GET, fetches all continents in the database)
 * /country (Type: GET, fetches all countries in the database)
-
+* /login/register (Type: POST, [Body](#add-a-user). Register a new user)
 ---
 
 ## Frontend
@@ -37,14 +37,27 @@ Write `alter table country MODIFY COLUMN country VARCHAR(255) AFTER continent_id
 
 ## JSON bodies
 
+##### Add a city
 ```
-Add a city
     "Cityname":"String",
     "Population": Integer,
     "Country": String
 
 Returns 200 OK if added.
 Returns 406 Not Acceptable if missing parameters
+```
+##### Add a user 
+```
+	"username":"String",
+	"password":"String",
+	"email":"String",
+	"firstName":"String",
+	"lastName":"String",
+	"active":Integer,
+	"role":["USER", "ADMIN"]
+
+Returns 200 OK if added.
+Returns 409 is username already is inserted
 ```
 
 ## Contact and Licence
