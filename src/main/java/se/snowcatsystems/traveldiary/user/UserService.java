@@ -37,11 +37,16 @@ public class UserService {
         user.setActive(userModel.getActive());
 
         User exist = userRepository.findByUsername(user.getUsername());
-        if ( exist == null ) {
+        if (exist == null) {
             userRepository.save(user);
             return false;
         } else {
             return true;
         }
+    }
+        public void deleteUser(UserModel userModel) {
+            User user = new User();
+            user.setUsername(userModel.getUsername());
+            userRepository.delete(user);
     }
 }

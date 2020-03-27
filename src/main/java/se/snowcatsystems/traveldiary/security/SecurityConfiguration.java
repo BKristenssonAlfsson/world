@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/login","/login/register").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/login/delete").access("hasRole('USER') or hasRole('ADMIN')")
                 .antMatchers(HttpMethod.GET, "/country").access("hasRole('USER') or hasRole('ADMIN')")
                 .anyRequest().denyAll();
     }
