@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.testcontainers.containers.MySQLContainer;
+import se.snowcatsystems.traveldiary.MySqlContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -68,6 +69,27 @@ public class UserTest {
         assertThat(result.getResponse().getHeader("Authorization")).isNotNull();
     }
 
+    @Test
+    @Order(2)
+    public void failLogin() throws Exception {
+        MvcResult result = mockUser.perform(post("/login")
+                .content("{ \"username\": \"tests\", \"password\": \"tests\" }")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andReturn();
+
+        assertThat(result.getResponse().getStatus()).isEqualTo(403);
+        assertThat(result.getResponse().getHeader("Authorization")).isNull();
+    }
+
+    @Test
+    @Order(3)
+    public void shouldReturn409() throws Exception {
+        mockUser.perform(post("/login/register")
+                .content("{ \"username\": \"test\", \"password\": \"test\" }")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(409));
+    }
+
     private HttpHeaders getHttpHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
 
@@ -75,5 +97,10 @@ public class UserTest {
         httpHeaders.add("Content-Type", "application/json");
 
         return httpHeaders;
+    }
+
+    @After
+    public void clean() throws Exception {
+
     }
 }
