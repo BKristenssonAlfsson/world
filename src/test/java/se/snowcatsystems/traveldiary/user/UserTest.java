@@ -1,4 +1,4 @@
-package se.snowcatsystems.traveldiary;
+package se.snowcatsystems.traveldiary.user;
 
 import org.junit.*;
 import org.junit.runner.*;
@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.testcontainers.containers.MySQLContainer;
-import se.snowcatsystems.traveldiary.MySqlContainer;
+import se.snowcatsystems.traveldiary.database.MySqlContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -45,7 +45,7 @@ public class UserTest {
                 .build();
 
         mockUser.perform(post("/login/register")
-                .content("{ \"username\": \"test\", \"password\": \"test\" }")
+                .content("{ \"username\": \"test\", \"password\": \"test\",\"email\":\"email@email.email\",\"firstName\":\"Test\",\"lastName\":\"Test\",\"active\":1,\"role\":[\"USER\", \"ADMIN\"] }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
 
