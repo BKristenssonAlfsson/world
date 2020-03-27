@@ -1,4 +1,4 @@
-package se.snowcatsystems.traveldiary.database;
+package se.snowcatsystems.traveldiary;
 
 import org.testcontainers.containers.MySQLContainer;
 

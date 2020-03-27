@@ -1,4 +1,4 @@
-package se.snowcatsystems.traveldiary.user;
+package se.snowcatsystems.traveldiary;
 
 import org.junit.*;
 import org.junit.runner.*;
@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.testcontainers.containers.MySQLContainer;
-import se.snowcatsystems.traveldiary.database.MySqlContainer;
+import se.snowcatsystems.traveldiary.MySqlContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;

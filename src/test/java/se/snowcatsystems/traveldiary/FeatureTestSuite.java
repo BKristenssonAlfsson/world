@@ -1,10 +1,9 @@
-package se.snowcatsystems.traveldiary.initilization;
+package se.snowcatsystems.traveldiary;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import se.snowcatsystems.traveldiary.user.UserTest;
 
 @ActiveProfiles("test")
 @TestPropertySource(locations="classpath:application-test.properties")
