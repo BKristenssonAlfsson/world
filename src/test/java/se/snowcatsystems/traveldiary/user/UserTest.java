@@ -1,6 +1,7 @@
 package se.snowcatsystems.traveldiary.user;
 
 import org.junit.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -37,7 +38,7 @@ public class UserTest {
     @ClassRule
     public static MySQLContainer mySQLContainer = MySqlContainer.getInstance();
 
-    @Before
+    @BeforeAll
     public void setup() throws Exception {
         mockUser = MockMvcBuilders
                 .webAppContextSetup(context)
@@ -97,10 +98,5 @@ public class UserTest {
         httpHeaders.add("Content-Type", "application/json");
 
         return httpHeaders;
-    }
-
-    @After
-    public void clean() throws Exception {
-
     }
 }
