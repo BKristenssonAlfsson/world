@@ -1,70 +1,62 @@
 package se.snowcatsystems.traveldiary.user;
 
-import org.junit.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+import se.snowcatsystems.traveldiary.initilization.AbstractTestContainerTest;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import se.snowcatsystems.traveldiary.initilization.AbstractInitilizerTest;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(SpringExtension.class)
-@WebAppConfiguration
-@AutoConfigureMockMvc
-public class UserTest extends AbstractInitilizerTest {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class UserControllerTest extends AbstractTestContainerTest {
 
     @Autowired
     private WebApplicationContext context;
 
     private String token = null;
 
+    @BeforeAll
+    void setup() throws Exception{
 
-    @Before
-    public void setup() throws Exception {
-        mockMvc = MockMvcBuilders
+        this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .apply(springSecurity())
                 .build();
 
-        mockMvc.perform(post("/login/register")
-                .content("{ \"username\": \"test\", \"password\": \"test\",\"email\":\"email@email.email\",\"firstName\":\"Test\",\"lastName\":\"Test\",\"active\":1,\"role\":[\"USER\", \"ADMIN\"] }")
+        this.mockMvc.perform(post("/login/register")
+                .content("{ \"username\":\"test\",\"password\":\"test\",\"email\":\"email@email.email\",\"firstName\":\"Test\",\"lastName\":\"Test\",\"active\":1,\"role\":[\"USER\", \"ADMIN\"] }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
 
-        MvcResult result = mockMvc.perform(post("/login")
+        MvcResult result = this.mockMvc.perform(post("/login")
                 .content("{ \"username\": \"test\", \"password\": \"test\" }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
+
         this.token = result.getResponse().getHeader("Authorization");
     }
 
     @Test
-    @Order(3)
-    public void testLogin() throws Exception {
+    void testLogin() throws Exception{
+
         MvcResult result = mockMvc.perform(post("/login")
-                .content("{ \"username\": \"test\", \"password\": \"test\" }")
+                .content("{ \"username\":\"test\",\"password\":\"test\" }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
 
-        assertThat(result.getResponse().getStatus()).isEqualTo(200);
-        assertThat(result.getResponse().getHeader("Authorization")).isNotNull();
+        assertEquals(200, result.getResponse().getStatus(), "We got 200 OK back");
+        assertNotNull(result.getResponse().getHeader("Authorization"), "Authorization has a token!");
     }
 
+
     @Test
-    @Order(2)
     public void shouldReturn409() throws Exception {
         mockMvc.perform(post("/login/register")
                 .content("{ \"username\": \"test\", \"password\": \"test\" }")
@@ -72,18 +64,7 @@ public class UserTest extends AbstractInitilizerTest {
                 .andExpect(status().is(409));
     }
 
-    @Test
-    @Order(1)
-    @Ignore
-    public void failLogin() throws Exception {
-        mockMvc.perform(post("/login")
-                .content("{ \"username\": \"tests\", \"password\": \"test\" }")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(403));
-    }
-
-
-    @After
+    @AfterAll
     public void clean() throws Exception {
         HttpHeaders httpHeaders = getHttpHeaders();
 

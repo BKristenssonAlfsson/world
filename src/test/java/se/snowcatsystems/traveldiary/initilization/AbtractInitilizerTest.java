@@ -1,5 +1,5 @@
 package se.snowcatsystems.traveldiary.initilization;
-
+?
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,28 +9,32 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import se.snowcatsystems.traveldiary.TravelDiaryApplication;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+@SpringBootTest(classes = TravelDiaryApplication.class, webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
-@ContextConfiguration(initializers = {AbstractInitilizerTest.Initilizer.class})
-public abstract class AbstractInitilizerTest {
+@ContextConfiguration(initializers = {AbstractTestContainerTest.Initializer.class})
+@Testcontainers
+public abstract class AbstractTestContainerTest {
 
     @Autowired
     public MockMvc mockMvc;
 
-    private static MySQLContainer sqlContainer;
+    public static MySQLContainer sqlContainer;
 
     static {
         sqlContainer = new MySQLContainer("mysql:latest")
                 .withDatabaseName("world")
-                .withUsername("test")
-                .withPassword("test");
+                .withUsername("sa")
+                .withPassword("sa");
         sqlContainer.start();
     }
 
-    public static class Initilizer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+    public static class Initializer
+            implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             TestPropertyValues.of(
                     "spring.datasource.url=" + sqlContainer.getJdbcUrl(),
