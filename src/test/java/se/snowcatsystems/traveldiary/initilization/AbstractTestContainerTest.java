@@ -1,5 +1,5 @@
 package se.snowcatsystems.traveldiary.initilization;
-?
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +18,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @AutoConfigureMockMvc
 @ContextConfiguration(initializers = {AbstractTestContainerTest.Initializer.class})
 @Testcontainers
-public abstract class AbstractTestContainerTest {
+public abstract class AbstractTestContainerTest  {
 
     @Autowired
     public MockMvc mockMvc;
