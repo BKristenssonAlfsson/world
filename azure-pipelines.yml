@@ -15,9 +15,3 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     goals: 'package'
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: 'target/world.war'
-    artifact: 'traveldiary'
-    publishLocation: 'pipeline'
