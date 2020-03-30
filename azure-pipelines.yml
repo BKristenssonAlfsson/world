@@ -12,6 +12,7 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
+    codeCoverageClassFilter: 'jaCoCo'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     goals: 'package'
