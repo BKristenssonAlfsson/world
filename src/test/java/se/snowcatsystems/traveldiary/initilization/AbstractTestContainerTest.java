@@ -25,6 +25,8 @@ public abstract class AbstractTestContainerTest  {
 
     public static MySQLContainer sqlContainer;
 
+    public String token = null;
+
     static {
         sqlContainer = new MySQLContainer("mysql:latest")
                 .withDatabaseName("world")

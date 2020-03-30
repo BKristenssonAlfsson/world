@@ -20,8 +20,6 @@ public class UserControllerTest extends AbstractTestContainerTest {
     @Autowired
     private WebApplicationContext context;
 
-    private String token = null;
-
     @BeforeAll
     void setup() throws Exception{
 
@@ -78,7 +76,7 @@ public class UserControllerTest extends AbstractTestContainerTest {
     private HttpHeaders getHttpHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
 
-        httpHeaders.add("Authorization", token);
+        httpHeaders.add("Authorization", this.token);
         httpHeaders.add("Content-Type", "application/json");
 
         return httpHeaders;

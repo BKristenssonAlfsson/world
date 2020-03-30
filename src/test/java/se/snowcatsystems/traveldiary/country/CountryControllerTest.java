@@ -13,10 +13,10 @@ import org.springframework.web.context.WebApplicationContext;
 import se.snowcatsystems.traveldiary.initilization.AbstractTestContainerTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -24,8 +24,6 @@ public class CountryControllerTest extends AbstractTestContainerTest {
 
     @Autowired
     private WebApplicationContext context;
-
-    private String token = null;
 
     @BeforeAll
     void setup() throws Exception{
@@ -36,12 +34,12 @@ public class CountryControllerTest extends AbstractTestContainerTest {
                 .build();
 
         this.mockMvc.perform(post("/login/register")
-                .content("{ \"username\":\"test\",\"password\":\"test\",\"email\":\"email@email.email\",\"firstName\":\"Test\",\"lastName\":\"Test\",\"active\":1,\"role\":[\"USER\", \"ADMIN\"] }")
+                .content("{ \"username\":\"tests\",\"password\":\"tests\",\"email\":\"emails@email.email\",\"firstName\":\"Test\",\"lastName\":\"Test\",\"active\":1,\"role\":[\"USER\", \"ADMIN\"] }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
 
         MvcResult result = this.mockMvc.perform(post("/login")
-                .content("{ \"username\": \"test\", \"password\": \"test\" }")
+                .content("{ \"username\": \"tests\", \"password\": \"tests\" }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
 
@@ -51,7 +49,7 @@ public class CountryControllerTest extends AbstractTestContainerTest {
     @Test
     void testGetCountries() throws Exception{
         HttpHeaders httpHeaders = getHttpHeaders();
-        MvcResult result = mockMvc.perform(post("/country")
+        MvcResult result = mockMvc.perform(get("/country")
                 .headers(httpHeaders)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful()).andReturn();
@@ -65,7 +63,7 @@ public class CountryControllerTest extends AbstractTestContainerTest {
 
         mockMvc.perform(delete("/login/delete")
                 .headers(httpHeaders)
-                .content("{ \"username\": \"test\" }")
+                .content("{ \"username\": \"tests\" }")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
     }
@@ -73,7 +71,7 @@ public class CountryControllerTest extends AbstractTestContainerTest {
     private HttpHeaders getHttpHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
 
-        httpHeaders.add("Authorization", token);
+        httpHeaders.add("Authorization", this.token);
         httpHeaders.add("Content-Type", "application/json");
 
         return httpHeaders;
