@@ -12,8 +12,12 @@ public class LanguageService {
     private LanguageRepository languageRepository;
 
     public LanguageModel addNewLanguage(LanguageModel languageModel) {
+        return null;
     }
 
-    public List<LanguageModel> getAllLanguages() {
+    public List<Language> getAllLanguages() {
+        List<Language> languages = languageRepository.findAll();
+
+        return languages;
     }
 }
