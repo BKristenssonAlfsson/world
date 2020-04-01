@@ -24,13 +24,18 @@ public class LanguageService {
     public LanguageModel addNewLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
 
+        Set<Country> countries = new HashSet<>();
+
         languageModel.getCountry().forEach(country -> {
             Country found = countryRepository.findByName(country);
-            System.out.println(found.toString());
+            countries.add(found);
         });
-//language.getCountries().add(found);
-        System.out.println(language.toString());
-       // languageRepository.save(language);
+
+        countries.forEach(country -> {
+            country.getLanguages().add(language);
+            languageRepository.save(language);
+        });
+
         return null;
     }
 
