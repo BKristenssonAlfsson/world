@@ -22,8 +22,8 @@ public class LanguageController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Language>> getAllLanguages() {
-        List<Language> languages = languageService.getAllLanguages();
+    public ResponseEntity<List<LanguageModel>> getAllLanguages() {
+        List<LanguageModel> languages = languageService.getAllLanguages();
 
         return new ResponseEntity<>(languages, HttpStatus.OK);
     }
