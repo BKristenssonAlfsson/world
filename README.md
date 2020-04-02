@@ -9,10 +9,13 @@ Hopefully in the end it will be possible to have users list their travel ways ar
 Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my rest end points are working.
 
 * /city (Type: GET, fetches all cities in the database)
-* /city (Type: POST, [Body](#add-a-city). Adds a new city)
+* /city (Type: POST, [Body](#add-a-city "add-a-city"). Adds a new city)
 * /continent (Type: GET, fetches all continents in the database)
 * /country (Type: GET, fetches all countries in the database)
-* /login/register (Type: POST, [Body](#add-a-user). Register a new user)
+* /login/register (Type: POST, [Body](#add-a-user "add-a-user"). Register a new user)
+* /login (Type: POST, [Body](#login "login"). Login an user)
+* /language (Type: POST, [Body](#add-a-language "add-a-language"). Add a new language)
+* /language (Type: GET, fetch all languages in the database)
 ---
 
 ## Frontend
@@ -54,10 +57,21 @@ Returns 406 Not Acceptable if missing parameters
 	"firstName":"String",
 	"lastName":"String",
 	"active":Integer,
-	"role":["USER", "ADMIN"]
+    "role":["USER", "ADMIN"]
 
 Returns 200 OK if added.
 Returns 409 is username already is inserted
+```
+#### Login
+```
+    "username":"String",
+	"password":"String"
+```
+
+#### Add a language
+```
+	"language": "String",
+	"country": ["Countryname", "Countryname", "Countryname"]
 ```
 
 ## Contact and Licence
