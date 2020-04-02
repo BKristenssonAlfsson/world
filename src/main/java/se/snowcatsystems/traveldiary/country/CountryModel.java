@@ -19,7 +19,7 @@ public class CountryModel {
     private Set<String> languages = new HashSet<>();
 
     public List<CountryModel> generateModels(List<Country> entity) {
-        List<CountryModel> cm = new ArrayList();
+        List<CountryModel> cm = new ArrayList<>();
 
         entity.forEach(model -> {
             CountryModel countryModel = new CountryModel();
