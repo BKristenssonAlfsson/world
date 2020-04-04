@@ -51,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/country").access("hasRole('USER') or hasRole('ADMIN')")
                 .antMatchers(HttpMethod.GET, "/language").access("hasRole('USER') or hasRole('ADMIN')")
                 .antMatchers(HttpMethod.POST, "/language").access("hasRole('USER') or hasRole('ADMIN')")
+                .antMatchers(HttpMethod.PATCH, "/language").access("hasRole('USER') or hasRole('ADMIN')")
                 .anyRequest().denyAll();
     }
 
