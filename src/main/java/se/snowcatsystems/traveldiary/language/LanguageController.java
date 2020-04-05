@@ -27,4 +27,10 @@ public class LanguageController {
 
         return new ResponseEntity<>(languages, HttpStatus.OK);
     }
+
+    @PatchMapping
+    public ResponseEntity<LanguageModel> updateLanguage(@RequestBody LanguageModel languageModel) {
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
