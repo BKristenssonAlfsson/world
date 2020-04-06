@@ -15,10 +15,18 @@ public class LanguageController {
     private LanguageService languageService;
 
     @PostMapping
-    public ResponseEntity<LanguageModel> addLanguage(@RequestBody LanguageModel languageModel) {
-        LanguageModel model = languageService.addNewLanguage(languageModel);
+    public ResponseEntity<String> addLanguage(@RequestBody LanguageModel languageModel) {
+        Boolean model = languageService.addNewLanguage(languageModel);
 
-        return new ResponseEntity<>(model, HttpStatus.OK);
+        String reply = "";
+
+        if (model){
+            reply = "Language " + languageModel.getLanguage() + " was added. Thank you";
+        } else {
+            reply = "Sadly something went bad. Please inform an administrator!";
+        }
+
+        return new ResponseEntity<>(reply, HttpStatus.OK);
     }
 
     @GetMapping

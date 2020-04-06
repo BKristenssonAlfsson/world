@@ -21,7 +21,7 @@ public class LanguageService {
     @Autowired
     private CountryRepository countryRepository;
 
-    public LanguageModel addNewLanguage(LanguageModel languageModel) {
+    public Boolean addNewLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
 
         Set<Country> countries = new HashSet<>();
@@ -36,7 +36,7 @@ public class LanguageService {
             languageRepository.save(language);
         });
 
-        return null;
+        return true;
     }
 
     public List<LanguageModel> getAllLanguages() {
