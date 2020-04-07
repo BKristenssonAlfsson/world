@@ -47,21 +47,27 @@ public class LanguageService {
 
     public void updateLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
+        Set<Country> countries = new HashSet<>();
 
         language = languageRepository.findByName(languageModel.getLanguage());
 
         if(language != null) {
-            System.out.println("Language found");
-
+            language.getCountries().forEach(country -> {
+                Country found = countryRepository.findByName(country.getName());
+                countries.add(found);
+            });
         } else {
             System.out.println("No language found!");
         }
 
-        Set<Country> countries = new HashSet<>();
+        countries.forEach(country -> {
+            country.getLanguages().remove(language);
+        });
+
+        countries.clear();
 
         languageModel.getCountry().forEach(country -> {
             Country found = countryRepository.findByName(country);
-            found.removeLanguage(language);
             countries.add(found);
         });
 
