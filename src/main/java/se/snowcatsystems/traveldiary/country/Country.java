@@ -33,10 +33,23 @@ public class Country implements Serializable {
     private Set<City> city = new HashSet<>();
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+            CascadeType.DETACH
     }, fetch = FetchType.LAZY)
     @JoinTable(name = "country_language",
         joinColumns = {@JoinColumn(name = "country_id")},
         inverseJoinColumns = {@JoinColumn(name = "language_id")})
     private Set<Language> languages;
+
+    public void addLanguage(Language language) {
+        this.languages.add(language);
+        language.getCountries().add(this);
+    }
+
+    public void removeLanguage(Language language) {
+        System.out.println(language.getLanguage());
+        System.out.println(this.getName());
+        this.languages.remove(language);
+        language.getCountries().remove(this);
+    }
 }

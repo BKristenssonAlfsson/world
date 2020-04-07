@@ -37,8 +37,20 @@ public class LanguageController {
     }
 
     @PatchMapping
-    public ResponseEntity<LanguageModel> updateLanguage(@RequestBody LanguageModel languageModel) {
+    public ResponseEntity<String> updateLanguage(@RequestBody LanguageModel languageModel) {
 
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        //Integer check =
+         languageService.updateLanguage(languageModel);
+/*
+        String reply = "";
+
+        if (check == 1){
+            reply = "Language " + languageModel.getLanguage() + " was updated. Thank you";
+        } else {
+            reply = "Language " + languageModel.getLanguage() + " was not updated.";
+        }
+*/
+        return new ResponseEntity<>("", HttpStatus.OK);
     }
 }

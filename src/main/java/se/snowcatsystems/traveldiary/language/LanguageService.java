@@ -42,7 +42,33 @@ public class LanguageService {
     public List<LanguageModel> getAllLanguages() {
         List<Language> languages = languageRepository.findAll();
 
-        List<LanguageModel> languageModels = languageModel.generateModels(languages);
-        return languageModels;
+        return languageModel.generateModels(languages);
+    }
+
+    public void updateLanguage(LanguageModel languageModel) {
+        language.setLanguage(languageModel.getLanguage());
+
+        language = languageRepository.findByName(languageModel.getLanguage());
+
+        if(language != null) {
+            System.out.println("Language found");
+
+        } else {
+            System.out.println("No language found!");
+        }
+
+        Set<Country> countries = new HashSet<>();
+
+        languageModel.getCountry().forEach(country -> {
+            Country found = countryRepository.findByName(country);
+            found.removeLanguage(language);
+            countries.add(found);
+        });
+
+        countries.forEach(country -> {
+            country.getLanguages().add(language);
+            languageRepository.save(language);
+        });
+
     }
 }
