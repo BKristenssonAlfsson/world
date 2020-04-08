@@ -15,7 +15,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Language implements Serializable {
 
     private static final long serialVersionUID = 1L;
