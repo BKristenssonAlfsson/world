@@ -25,17 +25,11 @@ public class LanguageService {
     public Boolean addNewLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
 
-        Set<Country> countries = new HashSet<>();
+        clearSet();
 
-        languageModel.getCountry().forEach(country -> {
-            Country found = countryRepository.findByName(country);
-            countries.add(found);
-        });
+        countries = addCountries(languageModel);
 
-        countries.forEach(country -> {
-            country.getLanguages().add(language);
-            languageRepository.save(language);
-        });
+        linkCountryAndLanguage(countries);
 
         return true;
     }
@@ -64,8 +58,26 @@ public class LanguageService {
         countries.clear();
     }
 
+    private Set<Country> addCountries(LanguageModel languageModel) {
+        languageModel.getCountry().forEach(country -> {
+            Country found = countryRepository.findByName(country);
+            countries.add(found);
+        });
+
+        return countries;
+    }
+
+    private void linkCountryAndLanguage(Set<Country> countries) {
+        countries.forEach(country -> {
+            country.getLanguages().add(language);
+            languageRepository.save(language);
+        });
+    }
+
     public Boolean updateLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
+
+        clearSet();
 
         language = findLanguage(languageModel.getLanguage());
 
@@ -77,15 +89,10 @@ public class LanguageService {
 
         clearSet();
 
-        languageModel.getCountry().forEach(country -> {
-            Country found = countryRepository.findByName(country);
-            countries.add(found);
-        });
+        countries = addCountries(languageModel);
 
-        countries.forEach(country -> {
-            country.getLanguages().add(language);
-            languageRepository.save(language);
-        });
+        linkCountryAndLanguage(countries);
+
         return true;
     }
 }
