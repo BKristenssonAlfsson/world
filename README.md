@@ -16,6 +16,7 @@ Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my
 * /login (Type: POST, [Body](#login "login"). Login an user)
 * /language (Type: POST, [Body](#add-a-language "add-a-language"). Add a new language)
 * /language (Type: GET, fetch all languages in the database)
+* /language (Type: PATCH, [body](#change-a-language) update a language with new countries)
 ---
 
 ## Frontend
@@ -51,12 +52,12 @@ Returns 406 Not Acceptable if missing parameters
 ```
 ##### Add a user 
 ```
-	"username":"String",
-	"password":"String",
-	"email":"String",
-	"firstName":"String",
-	"lastName":"String",
-	"active":Integer,
+    "username":"String",
+    "password":"String",
+    "email":"String",
+    "firstName":"String",
+    "lastName":"String",
+    "active":Integer,
     "role":["USER", "ADMIN"]
 
 Returns 200 OK if added.
@@ -65,13 +66,19 @@ Returns 409 is username already is inserted
 #### Login
 ```
     "username":"String",
-	"password":"String"
+    "password":"String"
 ```
 
 #### Add a language
 ```
-	"language": "String",
-	"country": ["Countryname", "Countryname", "Countryname"]
+    "language": "String",
+    "country": ["Countryname", "Countryname", "Countryname"]
+```
+
+### Change a language 
+```
+    "language": "String",
+    "country": ["Countryname","Countryname","Countryname"]
 ```
 
 ## Contact and Licence
