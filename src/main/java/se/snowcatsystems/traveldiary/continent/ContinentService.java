@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 @Service
 public class ContinentService {
 
+    //TODO: Add dynamic count on languages
+
     @Autowired
     private ContinentRepository continentRepository;
 
