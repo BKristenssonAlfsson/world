@@ -76,6 +76,7 @@ public class LanguageService {
         });
     }
 
+    //TODO: Bug. Right now we get a new list to update with. Would be better to just add to current list and use delete to remove language from country
     public Boolean updateLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
 
