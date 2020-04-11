@@ -40,17 +40,16 @@ public class LanguageController {
     public ResponseEntity<String> updateLanguage(@RequestBody LanguageModel languageModel) {
 
 
-        //Integer check =
-         languageService.updateLanguage(languageModel);
-/*
+        Boolean check = languageService.updateLanguage(languageModel);
+
         String reply = "";
 
-        if (check == 1){
+        if (check){
             reply = "Language " + languageModel.getLanguage() + " was updated. Thank you";
         } else {
             reply = "Language " + languageModel.getLanguage() + " was not updated.";
         }
-*/
-        return new ResponseEntity<>("", HttpStatus.OK);
+
+        return new ResponseEntity<>(reply, HttpStatus.OK);
     }
 }
