@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import se.snowcatsystems.traveldiary.TravelDiaryApplication;
 
@@ -23,12 +23,12 @@ public abstract class AbstractTestContainerTest  {
     @Autowired
     public MockMvc mockMvc;
 
-    public static MySQLContainer sqlContainer;
+    public static PostgreSQLContainer sqlContainer;
 
     public String token = null;
 
     static {
-        sqlContainer = new MySQLContainer("mysql:latest")
+        sqlContainer = new PostgreSQLContainer("postgres:latest")
                 .withDatabaseName("world")
                 .withUsername("sa")
                 .withPassword("sa");
