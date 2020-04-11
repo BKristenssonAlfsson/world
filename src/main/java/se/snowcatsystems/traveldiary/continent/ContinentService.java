@@ -26,22 +26,29 @@ public class ContinentService {
 
         List<Continent> continents = continentRepository.findAll();
         List<Country> country = countryRepository.findAll();
-        int count[] = new int[6];
+        int[] count = new int[6];
         List<ContinentModel> models = continentModel.getModelList(continents);
 
         country.forEach(c -> {
-            if ( c.getContinent().getContinent().equals("Africa")) {
-                count[0]++;
-            } else if (c.getContinent().getContinent().equals("Asia")) {
-                count[1]++;
-            }else if (c.getContinent().getContinent().equals("Europe")) {
-                count[2]++;
-            }else if (c.getContinent().getContinent().equals("North America")) {
-                count[3]++;
-            }else if (c.getContinent().getContinent().equals("Oceania")) {
-                count[4]++;
-            }else if (c.getContinent().getContinent().equals("South America")) {
-                count[5]++;
+            switch (c.getContinent().getContinent()) {
+                case "Africa":
+                    count[0]++;
+                    break;
+                case "Asia":
+                    count[1]++;
+                    break;
+                case "Europe":
+                    count[2]++;
+                    break;
+                case "North America":
+                    count[3]++;
+                    break;
+                case "Oceania":
+                    count[4]++;
+                    break;
+                case "South America":
+                    count[5]++;
+                    break;
             }
         });
 
