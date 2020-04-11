@@ -4,3 +4,5 @@
 .idea
 /out
 *.iml
+
+docker-compose.yml

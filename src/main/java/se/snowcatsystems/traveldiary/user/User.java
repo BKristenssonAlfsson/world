@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name ="user")
+@Table(name ="person")
 @Getter
 @Setter
 @ToString
