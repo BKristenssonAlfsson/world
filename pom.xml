@@ -14,13 +14,13 @@
     <packaging>war</packaging>
 
     <name>Travel Diary</name>
-    <description>A microservice to keep track of users travels</description>
+    <description>A microservice to keep track of a users travels</description>
 
     <developers>
         <developer>
             <name>Bjorn Kristensson Alfsson</name>
             <roles>
-                <role>Java Coder</role>
+                <role>Java Developer</role>
                 <role>Cloud Apprentice</role>
             </roles>
         </developer>
@@ -111,7 +111,7 @@
     </dependencies>
 
     <build>
-        <finalName>traveldiary</finalName>
+        <finalName>TravelDiaryApplication</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
