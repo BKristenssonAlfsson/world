@@ -22,8 +22,8 @@ public class LanguageModel {
         languages.forEach(language -> {
             LanguageModel languageModel = new LanguageModel();
             languageModel.setLanguage(language.getLanguage());
-            language.getCountries().forEach(countrys -> {
-               languageModel.country.add(countrys.getName());
+            language.getCountries().forEach(countries -> {
+               languageModel.country.add(countries.getName());
             });
 
             languageModels.add(languageModel);

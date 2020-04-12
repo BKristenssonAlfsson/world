@@ -15,7 +15,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Country implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +33,8 @@ public class Country implements Serializable {
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
-            CascadeType.DETACH
+            CascadeType.DETACH,
+            CascadeType.REFRESH
     }, fetch = FetchType.LAZY)
     @JoinTable(name = "country_language",
         joinColumns = {@JoinColumn(name = "country_id")},
@@ -47,8 +47,6 @@ public class Country implements Serializable {
     }
 
     public void removeLanguage(Language language) {
-        System.out.println(language.getLanguage());
-        System.out.println(this.getName());
         this.languages.remove(language);
         language.getCountries().remove(this);
     }

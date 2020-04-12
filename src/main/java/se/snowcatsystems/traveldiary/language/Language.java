@@ -36,6 +36,7 @@ public class Language implements Serializable {
     private String language;
 
     @ManyToMany(mappedBy = "languages",
-            cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH }, fetch = FetchType.LAZY)
+            cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH }, fetch = FetchType.LAZY)
     private Set<Country> countries;
+
 }

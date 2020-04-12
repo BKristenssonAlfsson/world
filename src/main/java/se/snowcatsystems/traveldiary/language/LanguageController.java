@@ -52,4 +52,11 @@ public class LanguageController {
 
         return new ResponseEntity<>(reply, HttpStatus.OK);
     }
+
+    @DeleteMapping
+    public ResponseEntity<String> removeLanguageFromCountry(@RequestBody LanguageModel languageModel) {
+        languageService.removeCountryFromLanguage(languageModel);
+
+        return new ResponseEntity<>("", HttpStatus.OK);
+    }
 }
