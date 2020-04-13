@@ -39,6 +39,7 @@ public class LanguageService {
 
         return languageModel.generateModels(languages);
     }
+
     private Language findLanguage(String language) {
         return languageRepository.findByName(language);
     }
@@ -75,17 +76,20 @@ public class LanguageService {
     public Boolean updateLanguage(LanguageModel languageModel) {
         language.setLanguage(languageModel.getLanguage());
 
-        clearSet();
+        if (language != null) {
+            clearSet();
 
-        language = findLanguage(languageModel.getLanguage());
+            language = findLanguage(languageModel.getLanguage());
 
-        countries = findCountries(language);
+            countries = findCountries(language);
 
-        countries = addCountries(languageModel);
+            countries = addCountries(languageModel);
 
-        linkCountryAndLanguage(countries);
+            linkCountryAndLanguage(countries);
 
-        return true;
+            return true;
+        }
+        return false;
     }
 
     public Boolean removeCountryFromLanguage(LanguageModel languageModel) {
@@ -103,5 +107,15 @@ public class LanguageService {
             return true;
         }
         return false;
+    }
+
+    public LanguageModel findLanguageByName(String language) {
+        this.language = findLanguage(language);
+
+        if ( this.language == null ){
+            return languageModel.noLanguageFound(language);
+        } else {
+            return languageModel.singleLanguage(this.language);
+        }
     }
 }

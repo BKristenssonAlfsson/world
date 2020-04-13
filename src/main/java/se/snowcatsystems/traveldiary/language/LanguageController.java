@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,13 @@ public class LanguageController {
         List<LanguageModel> languages = languageService.getAllLanguages();
 
         return new ResponseEntity<>(languages, HttpStatus.OK);
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<LanguageModel> getLanguage(@RequestParam String language) {
+        LanguageModel languageModel = languageService.findLanguageByName(language);
+
+        return new ResponseEntity<>(languageModel, HttpStatus.OK);
     }
 
     @PatchMapping

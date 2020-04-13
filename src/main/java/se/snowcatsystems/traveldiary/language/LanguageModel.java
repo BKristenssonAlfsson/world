@@ -30,4 +30,21 @@ public class LanguageModel {
         });
         return languageModels;
     }
+
+    public LanguageModel noLanguageFound(String falseLanguage) {
+        LanguageModel languageModel = new LanguageModel();
+        languageModel.setLanguage("The language " + falseLanguage + " was not found in the database. Please check if you wrote correct");
+
+        return languageModel;
+    }
+
+    public LanguageModel singleLanguage(Language language) {
+        LanguageModel languageModel = new LanguageModel();
+        languageModel.setLanguage(language.getLanguage());
+        language.getCountries().forEach(countries -> {
+            languageModel.country.add(countries.getName());
+        });
+
+        return languageModel;
+    }
 }
