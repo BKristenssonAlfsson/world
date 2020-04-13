@@ -22,11 +22,11 @@ public class LanguageController {
 
         if (model){
             reply = "Language " + languageModel.getLanguage() + " was added. Thank you";
+            return new ResponseEntity<>(reply, HttpStatus.OK);
         } else {
             reply = "Sadly something went bad. Please inform an administrator!";
+            return new ResponseEntity<>(reply, HttpStatus.BAD_REQUEST);
         }
-
-        return new ResponseEntity<>(reply, HttpStatus.OK);
     }
 
     @GetMapping
@@ -46,17 +46,23 @@ public class LanguageController {
 
         if (check){
             reply = "Language " + languageModel.getLanguage() + " was updated. Thank you";
+            return new ResponseEntity<>(reply, HttpStatus.OK);
         } else {
             reply = "Language " + languageModel.getLanguage() + " was not updated.";
+            return new ResponseEntity<>(reply, HttpStatus.BAD_REQUEST);
         }
-
-        return new ResponseEntity<>(reply, HttpStatus.OK);
     }
 
     @DeleteMapping
     public ResponseEntity<String> removeLanguageFromCountry(@RequestBody LanguageModel languageModel) {
-        languageService.removeCountryFromLanguage(languageModel);
-
-        return new ResponseEntity<>("", HttpStatus.OK);
+        Boolean check = languageService.removeCountryFromLanguage(languageModel);
+        String reply = "";
+        if (check){
+            reply = "Language " + languageModel.getLanguage() + " was updated. Thank you";
+            return new ResponseEntity<>(reply, HttpStatus.OK);
+        } else {
+            reply = "Language " + languageModel.getLanguage() + " was not found.";
+            return new ResponseEntity<>(reply, HttpStatus.BAD_REQUEST);
+        }
     }
 }

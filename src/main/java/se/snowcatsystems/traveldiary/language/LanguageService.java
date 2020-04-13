@@ -16,8 +16,6 @@ public class LanguageService {
     private Language language = new Language();
     private Set<Country> countries = new HashSet<>();
 
-    //TODO: Add Delete language
-
     @Autowired
     private LanguageRepository languageRepository;
 
@@ -46,7 +44,6 @@ public class LanguageService {
     }
 
     private Set<Country> findCountries( Language language ) {
-
         if(language != null) {
             language.getCountries().forEach(country -> {
                 Country found = countryRepository.findByName(country.getName());
@@ -65,7 +62,6 @@ public class LanguageService {
             Country found = countryRepository.findByName(country);
             countries.add(found);
         });
-
         return countries;
     }
 
@@ -92,16 +88,20 @@ public class LanguageService {
         return true;
     }
 
-    public void removeCountryFromLanguage(LanguageModel languageModel) {
+    public Boolean removeCountryFromLanguage(LanguageModel languageModel) {
         language = findLanguage(languageModel.getLanguage());
 
-        Country country = new Country();
+        if (language != null ){
+            Country country = new Country();
 
-        languageModel.getCountry().forEach(country::setName);
+            languageModel.getCountry().forEach(country::setName);
 
-        Country toRemoveFromLanguage = countryRepository.findByName(country.getName());
-        toRemoveFromLanguage.removeLanguage(language);
+            Country toRemoveFromLanguage = countryRepository.findByName(country.getName());
+            toRemoveFromLanguage.removeLanguage(language);
 
-        languageRepository.flush();
+            languageRepository.flush();
+            return true;
+        }
+        return false;
     }
 }
