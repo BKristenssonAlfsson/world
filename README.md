@@ -16,7 +16,9 @@ Using [Insomnia](https://insomnia.rest/ "Insomnia Rest Client") to check that my
 * /login (Type: POST, [Body](#login "login"). Login an user)
 * /language (Type: POST, [Body](#add-a-language "add-a-language"). Add a new language)
 * /language (Type: GET, fetch all languages in the database)
-* /language (Type: PATCH, [body](#change-a-language) update a language with new countries)
+* /language (Type: PATCH, [body](#change-a-language) add new country / countries to a language)
+* /language/find (Type: GET, @Param language) search for specific language.
+* /language (Type: DELETE, [body](#delete-a-language). Delete country / countries from a language)
 ---
 
 ## Frontend
@@ -79,6 +81,12 @@ Returns 409 is username already is inserted
 ```
     "language": "String",
     "country": ["Countryname","Countryname","Countryname"]
+```
+
+### Delete a language
+```
+	"language": "String",
+	"country": ["Countryname"]
 ```
 
 ## Contact and Licence
