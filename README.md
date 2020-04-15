@@ -29,14 +29,12 @@ I might do a Angular or Vue frontend one day, but for now, focus is 100% backend
 
 ## Init database
 
-I'm using Mysql 8 for this project with a database named `traveldiary` for now.
+I'm using PostgreSQL with a database named `world` for this.
 Follow these steps to generate and autopopulate the database:
 
 * Deploy the application. Tables are generated. 
 * In application.properties, switch `spring.datasource.initialization-mode=never` to
 `spring.datasource.initialization-mode=always`. 
-* In MySQL console, usually Country entity is mirrored wrong: <br> 
-Write `alter table country MODIFY COLUMN country VARCHAR(255) AFTER continent_id;`
 * Deploy again.
 * Switch `spring.datasource.initialization-mode=always` back to `spring.datasource.initialization-mode=never`.
 * Copy paste `country_language.sql` into the console and populate the join table.
