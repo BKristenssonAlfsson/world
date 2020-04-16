@@ -1,6 +1,7 @@
 package se.snowcatsystems.traveldiary.country;
 
 import lombok.*;
+import se.snowcatsystems.traveldiary.language.Language;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,5 +34,21 @@ public class CountryModel {
         });
 
         return cm;
+    }
+
+    public CountryModel noCountryFound(String land) {
+        CountryModel countryModel = new CountryModel();
+        countryModel.setName("The country " + land + " was not found. Did you spell it right?");
+        return countryModel;
+    }
+
+    public CountryModel singleCountry(Country country) {
+        CountryModel countryModel = new CountryModel();
+        countryModel.setName(country.getName());
+        countryModel.setContinent(country.getContinent().getContinent());
+        country.getLanguages().forEach(language -> {
+            countryModel.languages.add(language.getLanguage());
+        });
+        return countryModel;
     }
 }

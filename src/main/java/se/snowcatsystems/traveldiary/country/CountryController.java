@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,5 +21,12 @@ public class CountryController {
     public ResponseEntity<List<CountryModel>> getAllCountries() {
         List<CountryModel> model = countryService.getAllCountries();
         return new ResponseEntity<>(model, HttpStatus.OK);
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<CountryModel> getOneCountry(@RequestParam String country) {
+        CountryModel countryModel = countryService.findCountry(country);
+
+        return new ResponseEntity<>(countryModel, HttpStatus.OK);
     }
 }
