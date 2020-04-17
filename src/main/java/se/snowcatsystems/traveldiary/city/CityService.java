@@ -31,6 +31,7 @@ public class CityService {
         return cityModel.cityModelList(cities);
     }
 
+    //TODO: Return value
     public CityModel storeCity(CityModel cityModel) {
             city.setName(cityModel.getName());
             city.setPopulation(cityModel.getPopulation());
@@ -38,5 +39,14 @@ public class CityService {
             city.setCountry(country);
             cityRepository.save(city);
         return null;
+    }
+
+    public CityModel findOneCity(String cityModel) {
+        city = cityRepository.findByName(cityModel);
+        if (city == null) {
+            return this.cityModel.noCityFound(cityModel);
+        } else {
+            return this.cityModel.toModel(city);
+        }
     }
 }

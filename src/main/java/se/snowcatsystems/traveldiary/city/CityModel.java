@@ -34,4 +34,21 @@ public class CityModel {
 
         return models;
     }
+
+    public CityModel toModel(City city) {
+        CityModel cityModel = new CityModel();
+        cityModel.name = city.getName();
+        cityModel.population = city.getPopulation();
+        cityModel.country = city.getCountry().getName();
+        cityModel.continent = city.getCountry().getContinent().getContinent();
+
+        return cityModel;
+    }
+
+    public CityModel noCityFound(String city) {
+        CityModel cityModel = new CityModel();
+        cityModel.name = "Sorry, the city " + city + " was not found!";
+
+        return cityModel;
+    }
 }

@@ -28,4 +28,11 @@ public class CityController {
 
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
+
+    @GetMapping("/find")
+    public ResponseEntity<CityModel> findCity(@RequestParam String city) {
+        CityModel cityModel = cityService.findOneCity(city);
+
+        return new ResponseEntity<>(cityModel, HttpStatus.OK);
+    }
 }
