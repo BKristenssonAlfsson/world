@@ -18,6 +18,7 @@ public class CountryModel {
     private String continent;
     private String name;
     private Set<String> languages = new HashSet<>();
+    private Set<String> cities = new HashSet<>();
 
     public List<CountryModel> generateModels(List<Country> entity) {
         List<CountryModel> cm = new ArrayList<>();
@@ -29,6 +30,9 @@ public class CountryModel {
             countryModel.continent = model.getContinent().getContinent();
             model.getLanguages().forEach(language -> {
                countryModel.languages.add(language.getLanguage());
+            });
+            model.getCity().forEach(city -> {
+                countryModel.cities.add(city.getName() + ". Population: " + city.getPopulation() );
             });
             cm.add(countryModel);
         });
@@ -48,6 +52,9 @@ public class CountryModel {
         countryModel.setContinent(country.getContinent().getContinent());
         country.getLanguages().forEach(language -> {
             countryModel.languages.add(language.getLanguage());
+        });
+        country.getCity().forEach(city -> {
+            countryModel.cities.add(city.getName() + ". Population: " + city.getPopulation() );
         });
         return countryModel;
     }

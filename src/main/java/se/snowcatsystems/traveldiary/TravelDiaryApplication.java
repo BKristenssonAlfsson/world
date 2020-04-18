@@ -11,7 +11,7 @@ public class TravelDiaryApplication {
     /*
     TODO: Add Exception handling
     TODO: Add User account details (blog, saved travels etc)
-    TODO: When searching for a country, list all cities connected to it.
+    TODO: Add Language spoken in a city?
      */
     public static void main(String[] args) {
         SpringApplication.run(TravelDiaryApplication.class, args);
